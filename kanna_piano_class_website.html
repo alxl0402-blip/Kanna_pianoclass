@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanna_pianoclass</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Pretendard:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-neutral: #FDFBF7;
+            --text-dark: #2A2522;
+            --gold-accent: #B89050; 
+        }
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: var(--bg-neutral);
+            color: var(--text-dark);
+            -webkit-font-smoothing: antialiased;
+        }
+        .font-serif-kr {
+            font-family: 'Nanum Myeongjo', serif;
+        }
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-[#B89050] selection:text-white">
+
+    <header class="sticky top-0 z-40 bg-[#FDFBF7]/90 backdrop-blur-md border-b border-stone-200/60">
+        <div class="max-w-5xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="cursor-pointer group flex items-center space-x-2" onclick="window.scrollTo(0,0)">
+                <span class="text-xl opacity-80">🎹</span>
+                <div>
+                    <span class="font-serif-kr text-lg font-bold tracking-widest text-[#2A2522]">Kanna_pianoclass</span>
+                </div>
+            </div>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-stone-500">
+                <a href="#profile" class="hover:text-[#B89050] transition duration-300">프로필</a>
+                <a href="#classes" class="hover:text-[#B89050] transition duration-300">클래스 안내</a>
+                <a href="#videos" class="hover:text-[#B89050] transition duration-300">연주 영상</a>
+                <a href="#inquiry" class="hover:text-[#B89050] transition duration-300 text-[#2A2522] font-semibold">레슨 신청</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 py-16 flex-grow w-full space-y-32">
+
+        <section id="profile" class="flex flex-col md:flex-row items-center gap-12 md:gap-16 pt-4">
+            <div class="w-full md:w-5/12 max-w-sm mx-auto relative group">
+                <div class="relative rounded-2xl overflow-hidden shadow-xl aspect-[3/4] bg-stone-100 ring-1 ring-stone-200/50">
+                    <img src="https://i.postimg.cc/y8vPNzQm/baeghanna-peulopil.jpg" 
+                         alt="Kanna Profile" 
+                         class="w-full h-full object-cover object-center transition duration-700 group-hover:scale-105"
+                         crossorigin="anonymous">
+                </div>
+                <div class="absolute -bottom-4 -right-4 bg-[#2A2522] text-[#FDFBF7] px-5 py-3 rounded-xl text-xs font-medium shadow-xl border border-stone-700/50">
+                    ✨ 1:1 맞춤 오프라인 레슨
+                </div>
+            </div>
+
+            <div class="flex-1 space-y-7 text-center md:text-left">
+                <div class="inline-block px-4 py-1.5 bg-stone-100 text-[#B89050] text-[11px] font-bold rounded-full tracking-widest border border-stone-200">
+                    PIANIST & EDUCATOR
+                </div>
+                <h1 class="font-serif-kr text-3xl md:text-4xl font-bold leading-snug text-[#2A2522] tracking-tight">
+                    깊이 있는 연주와 감성 코드 편곡,<br/>
+                    칸나쌤과 함께하는 피아노.
+                </h1>
+                <p class="text-stone-500 leading-relaxed text-sm md:text-base max-w-lg mx-auto md:mx-0 font-light">
+                    안녕하세요, <strong class="text-[#2A2522] font-medium">Kanna_pianoclass</strong>입니다.<br/>
+                    방송 라이브 세션, 뮤지컬 음악감독, 앨범 레코딩 및 컴패션 밴드 '웨이브메이커스' 메인건반 경험을 바탕으로, 기초 반주부터 CCM 찬양 세컨건반, 입시 및 고급 편곡까지 오프라인 1:1 맞춤형으로 세심하게 지도합니다.
+                </p>
+
+                <div class="flex flex-wrap justify-center md:justify-start gap-3 pt-4">
+                    <a href="#inquiry" class="bg-[#2A2522] text-white px-7 py-3.5 rounded-lg hover:bg-[#B89050] transition duration-300 font-medium shadow-sm text-sm">
+                        레슨 신청하기
+                    </a>
+                    <a href="#videos" class="border border-stone-200 bg-transparent text-stone-600 px-7 py-3.5 rounded-lg hover:bg-stone-50 transition duration-300 font-medium text-sm">
+                        연주 영상 보기
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="classes" class="space-y-6">
+            <div class="text-center space-y-2">
+                <h2 class="font-serif-kr text-2xl md:text-3xl font-bold text-[#2A2522]">클래스 안내</h2>
+                <p class="text-sm text-stone-400">수강생의 목표와 성향에 맞춘 4가지 맞춤 커리큘럼 (오프라인 전용)</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+                <!-- 1. 취미 클래스 -->
+                <div class="bg-white p-6 rounded-2xl border border-stone-100 shadow-sm hover:shadow-md transition duration-300 space-y-3">
+                    <h4 class="font-serif-kr text-lg font-bold text-[#2A2522]">취미 클래스</h4>
+                    <p class="text-stone-500 text-sm leading-relaxed font-light">가요, 팝, 뉴에이지 등<br>음악을 즐기며 배우는 맞춤형 기초 과정</p>
+                </div>
+                
+                <!-- 2. CCM 반주 클래스 (Gold Accent Color applied) -->
+                <div class="bg-white p-6 rounded-2xl border-2 border-[#B89050] shadow-md hover:shadow-lg transition duration-300 space-y-3 relative">
+                    <div class="absolute -top-3 right-4 bg-[#B89050] text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full tracking-wider uppercase shadow-sm">
+                        POPULAR
+                    </div>
+                    <h4 class="font-serif-kr text-lg font-bold text-[#2A2522]">CCM 반주 클래스</h4>
+                    <p class="text-stone-500 text-sm leading-relaxed font-light">메인 및 세컨(신디) 건반 실전 반주법,<br>세련된 보이싱과 리하모니제이션</p>
+                </div>
+
+                <!-- 3. 입시 클래스 (Positioned before Professional, prominent highlight outline) -->
+                <div class="bg-white p-6 rounded-2xl border-2 border-[#2A2522] shadow-xl hover:shadow-2xl transition duration-300 space-y-3 relative transform md:-translate-y-1">
+                    <div class="absolute -top-3 right-4 bg-[#2A2522] text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full tracking-wider uppercase shadow-sm">
+                        RECOMMENDED
+                    </div>
+                    <h4 class="font-serif-kr text-lg font-bold text-[#2A2522]">입시 클래스</h4>
+                    <p class="text-stone-500 text-sm leading-relaxed font-light">대학 입시 및 예고 입시를 위한<br>체계적인 실기 입시 트레이닝</p>
+                </div>
+
+                <!-- 4. 전문 클래스 (Stone dark theme) -->
+                <div class="bg-stone-800 text-white p-6 rounded-2xl shadow-sm hover:shadow-md transition duration-300 space-y-3">
+                    <h4 class="font-serif-kr text-lg font-bold text-white">전문 클래스</h4>
+                    <p class="text-stone-300 text-sm leading-relaxed font-light">준프로 및 프로 연주자, 싱어송라이터를 위한<br>고급 편곡 및 심화 연주 테크닉</p>
+                </div>
+            </div>
+
+            <!-- Note about curriculum variance and pricing -->
+            <div class="text-center pt-2">
+                <p class="text-xs text-stone-400 font-light tracking-wide">
+                    ※ 수강생 분들의 실력과 목표에 따라 개개인마다 커리큘럼이 다르게 진행되며, 클래스별 레슨 금액은 상이하므로 문의 시 안내해 드립니다.
+                </p>
+            </div>
+        </section>
+
+        <section id="videos" class="space-y-8">
+            <div class="text-center space-y-2">
+                <h2 class="font-serif-kr text-2xl md:text-3xl font-bold text-[#2A2522]">연주 영상</h2>
+            </div>
+            
+            <div class="max-w-3xl mx-auto bg-white rounded-2xl overflow-hidden shadow-sm border border-stone-100 cursor-pointer group relative" onclick="window.open('https://www.youtube.com/watch?v=dmy2gg9Zp6I', '_blank')">
+                <div class="aspect-video relative overflow-hidden bg-stone-900 flex items-center justify-center">
+                    <img src="https://img.youtube.com/vi/dmy2gg9Zp6I/maxresdefault.jpg" alt="하기오스 영상 썸네일" class="w-full h-full object-cover opacity-70 group-hover:opacity-50 transition duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="bg-white/95 backdrop-blur-sm text-[#2A2522] px-7 py-3.5 rounded-full font-medium text-sm shadow-xl flex items-center space-x-2 transform group-hover:scale-105 transition duration-300">
+                            <svg class="w-5 h-5 text-[#B89050]" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" fill-rule="evenodd"></path></svg>
+                            <span>YouTube에서 감상하기</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="inquiry" class="bg-white p-8 md:p-12 rounded-3xl border border-stone-100 shadow-sm space-y-8 max-w-3xl mx-auto relative overflow-hidden">
+            <div class="absolute -top-20 -right-20 w-40 h-40 bg-stone-50 rounded-full blur-3xl"></div>
+            
+            <div class="text-center border-b pb-6 border-stone-100 relative z-10">
+                <h3 class="font-serif-kr text-2xl font-bold text-[#2A2522]">레슨 신청서</h3>
+                <p class="text-stone-400 mt-2 text-sm font-light">작성해주신 내용을 바탕으로 1~3일 내에 연락드립니다.</p>
+            </div>
+
+            <form onsubmit="handleSubmit(event)" class="space-y-6 relative z-10">
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                        <label class="block text-[11px] font-bold text-stone-500 mb-2 uppercase tracking-wider">이름</label>
+                        <input type="text" placeholder="예: 홍길동" required class="w-full p-3.5 text-sm border border-stone-200 rounded-xl focus:outline-none focus:border-[#B89050] focus:ring-1 focus:ring-[#B89050] bg-stone-50/50 transition">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-stone-500 mb-2 uppercase tracking-wider">생년월일</label>
+                        <input type="text" placeholder="예: 980523" required class="w-full p-3.5 text-sm border border-stone-200 rounded-xl focus:outline-none focus:border-[#B89050] focus:ring-1 focus:ring-[#B89050] bg-stone-50/50 transition">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-stone-500 mb-2 uppercase tracking-wider">성별</label>
+                        <select required class="w-full p-3.5 text-sm border border-stone-200 rounded-xl focus:outline-none focus:border-[#B89050] focus:ring-1 focus:ring-[#B89050] bg-stone-50/50 transition text-stone-700">
+                            <option value="">선택</option>
+                            <option value="여성">여성</option>
+                            <option value="남성">남성</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-[11px] font-bold text-stone-500 mb-2 uppercase tracking-wider">연락처</label>
+                        <input type="tel" required placeholder="010-0000-0000" class="w-full p-3.5 text-sm border border-stone-200 rounded-xl focus:outline-none focus:border-[#B89050] focus:ring-1 focus:ring-[#B89050] bg-stone-50/50 transition">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-stone-500 mb-2 uppercase tracking-wider">카카오톡 아이디</label>
+                        <input type="text" placeholder="번호로 연락 불가 시에만 작성" class="w-full p-3.5 text-sm border border-stone-200 rounded-xl focus:outline-none focus:border-[#B89050] focus:ring-1 focus:ring-[#B89050] bg-stone-50/50 transition">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-[11px] font-bold text-stone-500 mb-2 uppercase tracking-wider">거주 지역</label>
+                        <input type="text" required placeholder="예: 경기도 성남시 분당구" class="w-full p-3.5 text-sm border border-stone-200 rounded-xl focus:outline-none focus:border-[#B89050] focus:ring-1 focus:ring-[#B89050] bg-stone-50/50 transition">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-stone-500 mb-2 uppercase tracking-wider">레슨 방식</label>
+                        <input type="text" disabled value="오프라인 (대면 레슨)" class="w-full p-3.5 text-sm border border-stone-200 rounded-xl bg-stone-100 text-stone-500 cursor-not-allowed">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-[11px] font-bold text-stone-500 mb-2 uppercase tracking-wider">신청 클래스</label>
+                    <select id="classSelect" onchange="toggleCcmFields()" required class="w-full p-3.5 text-sm border border-stone-200 rounded-xl focus:outline-none focus:border-[#B89050] focus:ring-1 focus:ring-[#B89050] bg-stone-50/50 transition text-stone-700">
+                        <option value="">클래스를 선택해주세요</option>
+                        <option value="취미 클래스">취미 클래스 (가요, 팝, 뉴에이지)</option>
+                        <option value="CCM 반주 클래스">CCM 반주 클래스 (메인건반 / 세컨건반 실전)</option>
+                        <option value="입시 클래스">입시 클래스 (대학 및 예고 실기 입시)</option>
+                        <option value="전문 클래스">전문 클래스 (심화 연주 및 고급 편곡)</option>
+                    </select>
+                </div>
+
+                <!-- CCM 희망 신청자 전용 추가 문항 (Detailed Experience & Church) -->
+                <div id="ccmExtraFields" class="hidden space-y-6 p-5 bg-stone-50/80 rounded-2xl border border-stone-200/60 transition-all duration-300">
+                    <div class="text-xs font-bold text-[#B89050] tracking-wider uppercase mb-1">⛪ CCM 반주 클래스 신청자 추가 문항</div>
+                    
+                    <div>
+                        <label class="block text-[11px] font-bold text-stone-500 mb-2 uppercase tracking-wider">출석 중인 교회</label>
+                        <input type="text" id="churchName" placeholder="예: 분당우리교회" class="w-full p-3.5 text-sm border border-stone-200 rounded-xl focus:outline-none focus:border-[#B89050] focus:ring-1 focus:ring-[#B89050] bg-white transition">
+                    </div>
+
+                    <div>
+                        <label class="block text-[11px] font-bold text-stone-500 mb-2 uppercase tracking-wider">현재 예배 반주 상태 (경험)</label>
+                        <select id="ccmStatus" class="w-full p-3.5 text-sm border border-stone-200 rounded-xl focus:outline-none focus:border-[#B89050] focus:ring-1 focus:ring-[#B89050] bg-white transition text-stone-700">
+                            <option value="">현재 상태를 선택해주세요</option>
+                            <option value="반주자 준비하는 완전 경험 없는 상태">반주자 준비하는 완전 경험 없는 상태</option>
+                            <option value="메인건반 반주자 (메인대예배)">메인건반 반주자 (메인대예배)</option>
+                            <option value="세컨건반 반주자">세컨건반 반주자</option>
+                            <option value="기타 반주 경험">기타 반주 경험</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-[11px] font-bold text-stone-500 mb-2 uppercase tracking-wider">희망 요일 및 시간대</label>
+                    <input type="text" required placeholder="예: 목요일 3시~8시 사이 / 주말 오전 가능" class="w-full p-3.5 text-sm border border-stone-200 rounded-xl focus:outline-none focus:border-[#B89050] focus:ring-1 focus:ring-[#B89050] bg-stone-50/50 transition">
+                </div>
+
+                <div>
+                    <label class="block text-[11px] font-bold text-stone-500 mb-2 uppercase tracking-wider">현재 피아노 실력</label>
+                    <textarea rows="2" required placeholder="피아노를 배워본 기간이나, 현재 어느 정도 연주가 가능한지 구체적으로 적어주세요." class="w-full p-3.5 text-sm border border-stone-200 rounded-xl focus:outline-none focus:border-[#B89050] focus:ring-1 focus:ring-[#B89050] bg-stone-50/50 transition resize-none"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-[11px] font-bold text-stone-500 mb-2 uppercase tracking-wider">배우고 싶은 곡 또는 장르</label>
+                    <textarea rows="2" required placeholder="CCM, 재즈, 뉴에이지 등 구체적으로 마스터하고 싶은 곡이나 배우고 싶은 장르를 적어주세요." class="w-full p-3.5 text-sm border border-stone-200 rounded-xl focus:outline-none focus:border-[#B89050] focus:ring-1 focus:ring-[#B89050] bg-stone-50/50 transition resize-none"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-[11px] font-bold text-stone-500 mb-2 uppercase tracking-wider">기타 문의사항</label>
+                    <textarea rows="2" placeholder="유의사항이나 질문사항 등을 편하게 남겨주세요." class="w-full p-3.5 text-sm border border-stone-200 rounded-xl focus:outline-none focus:border-[#B89050] focus:ring-1 focus:ring-[#B89050] bg-stone-50/50 transition resize-none"></textarea>
+                </div>
+                
+                <div class="pt-4 text-center">
+                    <button type="submit" class="w-full md:w-auto min-w-[240px] bg-[#2A2522] hover:bg-[#B89050] text-white font-medium py-4 px-8 rounded-xl transition duration-300 shadow-md hover:shadow-lg text-sm">
+                        신청서 제출하기
+                    </button>
+                </div>
+            </form>
+        </section>
+
+    </main>
+
+    <footer class="bg-[#FDFBF7] border-t border-stone-200/60 py-12 mt-10">
+        <div class="max-w-5xl mx-auto px-6 flex flex-col items-center space-y-6">
+            <h2 class="font-serif-kr text-lg font-bold text-[#2A2522] tracking-widest">Kanna_pianoclass</h2>
+            
+            <div class="flex items-center space-x-5">
+                <a href="https://www.instagram.com/kanna_pianoclass" target="_blank" rel="noopener noreferrer" class="text-stone-400 hover:text-[#B89050] transition text-sm flex items-center space-x-1.5">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"></path></svg>
+                    <span>Instagram</span>
+                </a>
+                <span class="text-stone-300">|</span>
+                <a href="https://www.youtube.com/@칸나피아노" target="_blank" rel="noopener noreferrer" class="text-stone-400 hover:text-[#B89050] transition text-sm flex items-center space-x-1.5">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z" clip-rule="evenodd"></path></svg>
+                    <span>YouTube</span>
+                </a>
+            </div>
+
+            <p class="text-xs text-stone-400">© 2026 Kanna_pianoclass. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toastMessage" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-[#2A2522] text-white px-6 py-4 rounded-full shadow-2xl transition-all duration-500 opacity-0 translate-y-4 pointer-events-none z-50 flex items-center space-x-3 border border-stone-700">
+        <svg class="w-5 h-5 text-[#B89050]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+        <span class="text-sm font-medium tracking-wide">레슨 신청이 성공적으로 접수되었습니다.</span>
+    </div>
+
+    <!-- JavaScript Helpers -->
+    <script>
+        function toggleCcmFields() {
+            const classSelect = document.getElementById('classSelect');
+            const ccmFields = document.getElementById('ccmExtraFields');
+            const churchInput = document.getElementById('churchName');
+            const ccmStatusSelect = document.getElementById('ccmStatus');
+
+            if (classSelect.value === 'CCM 반주 클래스') {
+                ccmFields.classList.remove('hidden');
+                churchInput.setAttribute('required', 'true');
+                ccmStatusSelect.setAttribute('required', 'true');
+            } else {
+                ccmFields.classList.add('hidden');
+                churchInput.removeAttribute('required');
+                ccmStatusSelect.removeAttribute('required');
+            }
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            const toast = document.getElementById('toastMessage');
+            
+            toast.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+            toast.classList.add('opacity-100', 'translate-y-0');
+            
+            setTimeout(() => {
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+                event.target.reset();
+                toggleCcmFields();
+            }, 3500);
+        }
+    </script>
+</body>
+</html>
