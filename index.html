@@ -72,7 +72,7 @@
                 </button>
                 
                 <!-- Desktop Contact (Hidden on mobile) -->
-                <a href="http://pf.kakao.com/_MlAaX" target="_blank" class="hidden md:inline-block text-[11px] font-eng font-bold tracking-widest text-[var(--text-black)] hover:text-[var(--pink-point)] transition duration-300">CONTACT</a>
+                <button onclick="openContactModal()" class="hidden md:inline-block text-[11px] font-eng font-bold tracking-widest text-[var(--text-black)] hover:text-[var(--pink-point)] transition duration-300">CONTACT</button>
                 
                 <!-- Mobile Hamburger Toggle -->
                 <button onclick="toggleMobileMenu()" class="md:hidden text-[var(--text-black)] hover:text-[var(--pink-point)] transition-colors p-2" aria-label="Menu">
@@ -91,7 +91,7 @@
             <button onclick="showSection('classes'); toggleMobileMenu();" class="block w-full text-left font-eng font-bold text-xs tracking-[0.2em] uppercase text-[var(--text-black)]/80 hover:text-[var(--pink-point)] py-2">Lesson</button>
             <button onclick="showSection('sheet-music'); toggleMobileMenu();" class="block w-full text-left font-eng font-bold text-xs tracking-[0.2em] uppercase text-[var(--text-black)]/80 hover:text-[var(--pink-point)] py-2">Shop</button>
             <div class="pt-4 border-t border-[var(--text-black)]/10">
-                <a href="http://pf.kakao.com/_MlAaX" target="_blank" class="block w-full text-left text-xs font-eng font-bold tracking-widest text-[var(--pink-point)] py-2">CONTACT (KAKAO)</a>
+                <button onclick="openContactModal(); toggleMobileMenu();" class="block w-full text-left text-xs font-eng font-bold tracking-widest text-[var(--pink-point)] py-2">CONTACT</button>
             </div>
         </div>
     </header>
@@ -484,6 +484,27 @@
     <!-- Modals Overlay Background -->
     <div id="modalOverlay" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center px-4 overflow-y-auto pt-20 pb-10">
         
+        <!-- Contact Modal -->
+        <div id="contactModal" class="hidden bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-8 max-w-md w-full shadow-2xl relative my-auto">
+            <h3 class="font-eng font-bold text-xl mb-2">CONTACT</h3>
+            <p class="text-xs text-[var(--text-black)]/70 mb-5 font-light leading-relaxed break-keep">
+                레슨 및 악보 관련 문의, 그리고 <strong class="font-bold text-[var(--text-black)]">레코딩·편곡·건반 세션 등 작업 의뢰</strong>는 카카오톡 채널로 문의해 주시면 가장 빠르게 상담이 가능합니다.
+            </p>
+            <div class="space-y-3">
+                <button onclick="window.open('http://pf.kakao.com/_MlAaX', '_blank')" class="w-full py-4 bg-[#FEE500] text-[#191919] text-xs font-bold tracking-widest hover:opacity-90 transition-opacity shadow-sm flex items-center justify-center space-x-2">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 3c-5.523 0-10 3.551-10 7.933 0 2.85 1.836 5.342 4.673 6.643-.228.847-.822 3.013-.852 3.167-.039.206.079.201.168.142.072-.047 2.012-1.328 3.528-2.31 1.096.313 1.859.458 2.483.458 5.523 0 10-3.551 10-7.933S17.523 3 12 3z"/></svg>
+                    <span>카카오톡 채널로 문의하기</span>
+                </button>
+                <button onclick="copyEmailToClipboard()" class="w-full py-4 bg-[var(--bg-main)] border border-[var(--text-black)]/10 text-[var(--text-black)] text-[11px] font-eng font-bold tracking-widest hover:bg-stone-200 transition-colors flex items-center justify-center space-x-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    <span>kanna.pianoccm@gmail.com (이메일 복사)</span>
+                </button>
+            </div>
+            <div class="mt-6 pt-4 border-t border-[var(--text-black)]/10">
+                <button onclick="closeModal()" class="w-full py-3 bg-stone-200 text-stone-800 text-xs font-eng font-bold tracking-widest hover:bg-stone-300 transition-colors">CLOSE</button>
+            </div>
+        </div>
+
         <!-- Sheet Detail Modal -->
         <div id="sheetDetailModal" class="hidden bg-[var(--white-bg)] border border-[var(--text-black)]/10 max-w-3xl w-full shadow-2xl relative my-auto">
             <button onclick="closeModal()" class="absolute top-4 right-4 text-[var(--text-black)]/50 hover:text-[var(--text-black)] z-10 p-2">
@@ -648,6 +669,7 @@
             document.getElementById('paymentModal').classList.add('hidden');
             document.getElementById('reviewModal').classList.add('hidden');
             document.getElementById('sheetDetailModal').classList.add('hidden');
+            document.getElementById('contactModal').classList.add('hidden');
             document.getElementById('sheetDetailVideo').src = ''; // stop video playing
         }
 
@@ -702,6 +724,28 @@
             
             closeModal();
             showToast(`${nickname}님 환영합니다!`, '👋');
+        }
+
+        function openContactModal() {
+            hideAllModalsInsideOverlay();
+            openModalOverlay();
+            document.getElementById('contactModal').classList.remove('hidden');
+        }
+
+        function copyEmailToClipboard() {
+            const textarea = document.createElement('textarea');
+            textarea.value = 'kanna.pianoccm@gmail.com';
+            textarea.style.position = 'fixed';
+            document.body.appendChild(textarea);
+            textarea.focus();
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                showToast('이메일 주소가 복사되었습니다.', '📧');
+            } catch (err) {
+                window.location.href = 'mailto:kanna.pianoccm@gmail.com';
+            }
+            document.body.removeChild(textarea);
         }
 
         function logout() {
