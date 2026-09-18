@@ -55,7 +55,7 @@
             <nav class="hidden md:flex items-center space-x-12 text-[11px] font-eng font-bold tracking-[0.2em] uppercase text-[var(--text-black)]/60">
                 <button onclick="showSection('profile')" class="nav-btn hover:text-[var(--pink-point)] transition duration-300">Profile</button>
                 <button onclick="showSection('performance')" class="nav-btn hover:text-[var(--pink-point)] transition duration-300">Performance</button>
-                <button onclick="showSection('classes')" class="nav-btn hover:text-[var(--pink-point)] transition duration-300">Class</button>
+                <button onclick="showSection('lesson')" class="nav-btn hover:text-[var(--pink-point)] transition duration-300">Lesson</button>
                 <button onclick="showSection('sheet-music')" class="nav-btn hover:text-[var(--pink-point)] transition duration-300">Shop</button>
             </nav>
             
@@ -260,12 +260,12 @@
             </div>
         </section>
 
-        <!-- Class Section -->
-        <section id="classes" class="tab-section max-w-6xl mx-auto px-6 py-24 magazine-border">
-            <h2 class="font-eng font-bold text-3xl tracking-widest text-[var(--text-black)] pb-6 mb-4 border-b border-[var(--text-black)]">CLASS.</h2>
+        <!-- Lesson Section (Renamed from Class) -->
+        <section id="lesson" class="tab-section max-w-6xl mx-auto px-6 py-24 magazine-border">
+            <h2 class="font-eng font-bold text-3xl tracking-widest text-[var(--text-black)] pb-6 mb-4 border-b border-[var(--text-black)]">LESSON.</h2>
             <p class="text-xs font-light text-[var(--text-black)]/60 tracking-wider mb-8">개개인의 성향과 레벨에 맞춰 1:1 맞춤 커리큘럼을 제공합니다.</p>
             
-            <ul class="flex flex-col border-t border-[var(--text-black)]/10">
+            <ul class="flex flex-col border-t border-[var(--text-black)]/10 mb-16">
                 <li class="group border-b border-[var(--text-black)]/10 py-10 transition-all duration-300 hover:border-[var(--pink-point)] cursor-default flex flex-col md:flex-row md:items-center justify-between">
                     <div>
                         <h3 class="font-bold text-2xl text-[var(--text-black)]">취미 클래스</h3>
@@ -320,16 +320,81 @@
             </ul>
 
             <!-- Guidance note for lesson application -->
-            <div class="mt-12 text-center bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-6 shadow-sm">
+            <div class="mb-16 text-center bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-6 shadow-sm">
                 <p class="text-xs font-light text-[var(--text-black)]/70 leading-relaxed">
-                    💡 하단의 <strong class="font-bold text-[var(--text-black)]">문의하기(카카오톡)</strong> 버튼을 통해 희망하는 클래스와 상세한 내용을 남겨주시면, 친절한 상담과 함께 레슨 신청이 진행됩니다.
+                    💡 아래의 <strong class="font-bold text-[var(--text-black)]">레슨 문의하기</strong> 신청서를 작성해 주시면, 확인 후 1~3일 내에 순차적으로 답변을 드립니다.
                 </p>
+            </div>
+
+            <!-- Comprehensive Lesson Inquiry Form -->
+            <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-8 md:p-12 shadow-sm">
+                <div class="mb-10 border-b border-[var(--text-black)]/10 pb-6">
+                    <span class="font-eng font-bold text-xs tracking-[0.3em] text-[var(--pink-point)] uppercase block mb-2">APPLICATION FORM</span>
+                    <h3 class="text-2xl md:text-3xl font-bold text-[var(--text-black)]">레슨 문의하기</h3>
+                    <p class="text-xs text-[var(--text-black)]/60 mt-2 font-light">작성 후 아래 버튼을 누르시면 내용이 자동으로 복사되며 카카오톡 채널로 이동합니다.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div>
+                        <label class="block text-xs font-bold text-[var(--text-black)] mb-2 uppercase font-eng">이름</label>
+                        <input type="text" id="inquiryName" placeholder="성함을 입력해 주세요" class="w-full px-4 py-3 bg-[var(--bg-main)] border border-[var(--text-black)]/20 text-sm focus:outline-none focus:border-[var(--pink-point)]">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-[var(--text-black)] mb-2 uppercase font-eng">생년월일 / 성별</label>
+                        <input type="text" id="inquiryBirthGender" placeholder="예: 980101 / 여" class="w-full px-4 py-3 bg-[var(--bg-main)] border border-[var(--text-black)]/20 text-sm focus:outline-none focus:border-[var(--pink-point)]">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-[var(--text-black)] mb-2 uppercase font-eng">연락처</label>
+                        <input type="text" id="inquiryContact" placeholder="010-0000-0000" class="w-full px-4 py-3 bg-[var(--bg-main)] border border-[var(--text-black)]/20 text-sm focus:outline-none focus:border-[var(--pink-point)]">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-[var(--text-black)] mb-2 uppercase font-eng">거주 지역 (도시, 광역 단위)</label>
+                        <input type="text" id="inquiryRegion" placeholder="예: 서울 마포구 / 전주시 완산구" class="w-full px-4 py-3 bg-[var(--bg-main)] border border-[var(--text-black)]/20 text-sm focus:outline-none focus:border-[var(--pink-point)]">
+                    </div>
+                </div>
+
+                <div class="space-y-6 mb-8">
+                    <div>
+                        <label class="block text-xs font-bold text-[var(--text-black)] mb-2 uppercase font-eng">피아노 경력 및 경험</label>
+                        <input type="text" id="inquiryCareer" placeholder="예: 체르니 30번 완료, 코드 반주 2년 등" class="w-full px-4 py-3 bg-[var(--bg-main)] border border-[var(--text-black)]/20 text-sm focus:outline-none focus:border-[var(--pink-point)]">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-[var(--text-black)] mb-2 uppercase font-eng">배우고 싶은 곡 / 스킬</label>
+                        <input type="text" id="inquiryGoal" placeholder="예: 재즈 보이싱 마스터, 특정 CCM 곡 반주 등" class="w-full px-4 py-3 bg-[var(--bg-main)] border border-[var(--text-black)]/20 text-sm focus:outline-none focus:border-[var(--pink-point)]">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-[var(--text-black)] mb-2 uppercase font-eng">좋아하는 곡 (찬양, 재즈 등)</label>
+                        <input type="text" id="inquiryFavorite" placeholder="예: 주 품에, Bill Evans 곡 등" class="w-full px-4 py-3 bg-[var(--bg-main)] border border-[var(--text-black)]/20 text-sm focus:outline-none focus:border-[var(--pink-point)]">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-[var(--text-black)] mb-2 uppercase font-eng">예배 반주 경험 및 출석 교회 (CCM 레슨 희망 시)</label>
+                        <input type="text" id="inquiryWorshipChurch" placeholder="예: 찬양팀 메인건반 1년 경력 / OO교회 출석 (해당없음 시 생략 가능)" class="w-full px-4 py-3 bg-[var(--bg-main)] border border-[var(--text-black)]/20 text-sm focus:outline-none focus:border-[var(--pink-point)]">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-[var(--text-black)] mb-2 uppercase font-eng">희망 수업 형태 및 요일/시간대</label>
+                        <input type="text" id="inquirySchedule" placeholder="예: 주 1회 1시간 / 평일 저녁 또는 토요일 선호" class="w-full px-4 py-3 bg-[var(--bg-main)] border border-[var(--text-black)]/20 text-sm focus:outline-none focus:border-[var(--pink-point)]">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-[var(--text-black)] mb-2 uppercase font-eng">기타 희망 사항 및 유의사항</label>
+                        <textarea id="inquiryNotes" rows="3" placeholder="궁금하신 점이나 전달할 말씀을 적어주세요." class="w-full px-4 py-3 bg-[var(--bg-main)] border border-[var(--text-black)]/20 text-sm focus:outline-none focus:border-[var(--pink-point)]"></textarea>
+                    </div>
+                </div>
+
+                <div class="pt-6 border-t border-[var(--text-black)]/10 text-center">
+                    <p class="text-xs font-light text-[var(--text-black)]/60 mb-6 leading-relaxed">
+                        아래 항목을 작성 후 버튼을 누르시면 내용이 자동으로 클립보드에 복사되며 카카오톡 채널로 이동합니다. 채팅창에 붙여넣기(Ctrl+V)하여 전송해 주세요. (카카오톡 채널 내에서도 직접 문의가 가능합니다)
+                    </p>
+                    <button onclick="submitLessonInquiry()" class="px-10 py-4 bg-[var(--text-black)] text-white text-xs font-eng font-bold tracking-widest hover:bg-[var(--pink-point)] transition-all shadow-sm">
+                        카카오톡으로 레슨 문의 보내기 ↗
+                    </button>
+                </div>
             </div>
         </section>
 
         <!-- Shop Section -->
         <section id="sheet-music" class="tab-section max-w-6xl mx-auto px-6 py-24 magazine-border">
-            <h2 class="font-eng font-bold text-3xl tracking-widest text-[var(--text-black)] pb-6 mb-12 border-b border-[var(--text-black)]">SHOP & SHEET.</h2>
+            <h2 class="font-eng font-bold text-3xl tracking-widest text-[var(--text-black)] pb-6 mb-4 border-b border-[var(--text-black)]">SHOP & SHEET.</h2>
+            <p class="text-xs font-light text-[var(--text-black)]/60 tracking-wider mb-12">구매하신 악보는 1개월 내 다운로드 가능하며, 다운로드 완료 시 영구 소장하실 수 있습니다.</p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Sheet Item 1 -->
@@ -342,7 +407,7 @@
                             </div>
                         </div>
                         <h3 class="font-bold text-lg text-[var(--text-black)] mb-2">아 하나님의 은혜로 (Piano Solo)</h3>
-                        <p class="text-xs text-[var(--text-black)]/60 mb-4 font-light">고해상도 PDF 악보</p>
+                        <p class="text-xs text-[var(--text-black)]/60 mb-4 font-light">고해상도 PDF 악보 (1개월 내 다운로드 / 영구 소장)</p>
                     </div>
                     <div class="pt-4 border-t border-[var(--text-black)]/10">
                         <div class="flex items-center justify-between mb-3">
@@ -365,7 +430,7 @@
                             </div>
                         </div>
                         <h3 class="font-bold text-lg text-[var(--text-black)] mb-2">주 품에 (Jazz Ver.)</h3>
-                        <p class="text-xs text-[var(--text-black)]/60 mb-4 font-light">고해상도 PDF 악보</p>
+                        <p class="text-xs text-[var(--text-black)]/60 mb-4 font-light">고해상도 PDF 악보 (1개월 내 다운로드 / 영구 소장)</p>
                     </div>
                     <div class="pt-4 border-t border-[var(--text-black)]/10">
                         <div class="flex items-center justify-between mb-3">
@@ -438,7 +503,7 @@
     <div id="paymentModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center px-4">
         <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-8 max-w-md w-full shadow-2xl relative">
             <h3 class="font-eng font-bold text-xl mb-2">SECURE CHECKOUT</h3>
-            <p id="paymentItemDesc" class="text-xs text-[var(--text-black)]/60 mb-6 font-light">결제 후 즉시 PDF 다운로드가 가능합니다.</p>
+            <p id="paymentItemDesc" class="text-xs text-[var(--text-black)]/60 mb-6 font-light">결제 후 1개월 내 다운로드 가능 (다운로드 완료 시 영구 소장 가능합니다.)</p>
             
             <div class="bg-[var(--bg-main)] p-4 border border-[var(--text-black)]/10 mb-6 flex justify-between items-center">
                 <span id="paymentItemName" class="text-sm font-bold">상품명</span>
@@ -614,8 +679,8 @@
                 return;
             }
 
-            const total = cart.reduce((sum, item) => sum + item.price, window.cartTotal = 0);
-            currentItem = { isCartCheckout: true, name: `장바구니 악보 외 ${cart.length}건`, price: cart.reduce((a,b)=>a+b.price, 0) };
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            currentItem = { isCartCheckout: true, name: `장바구니 악보 외 ${cart.length}건`, price: total };
             
             document.getElementById('paymentItemName').innerText = currentItem.name;
             document.getElementById('paymentItemPrice').innerText = currentItem.price.toLocaleString() + ' KRW';
@@ -653,7 +718,6 @@
             if (currentItem.isCartCheckout) {
                 cart.forEach(item => {
                     purchasedItems[item.itemId] = true;
-                    // Update individual buttons if present
                     const actionContainer = item.itemId === 'sheet1' ? document.getElementById('item1-action') : document.getElementById('item2-action');
                     if (actionContainer) {
                         actionContainer.innerHTML = `
@@ -665,7 +729,7 @@
                 cart = [];
                 updateCartUI();
                 closePaymentModal();
-                showToast(`결제가 완료되었습니다! 모든 악보의 다운로드를 시작합니다.`);
+                showToast(`결제가 완료되었습니다! 1개월 내 다운로드 가능하며, 다운로드 후 영구 소장하실 수 있습니다.`);
                 downloadPDF(downloadedNames);
             } else {
                 const itemId = currentItem.itemId;
@@ -677,14 +741,14 @@
                 `;
 
                 closePaymentModal();
-                showToast(`결제가 완료되었습니다! 바로 다운로드 하실 수 있습니다.`);
+                showToast(`결제가 완료되었습니다! 1개월 내 다운로드 가능하며, 다운로드 후 영구 소장하실 수 있습니다.`);
                 downloadPDF(currentItem.name);
             }
         }
 
         function downloadPDF(sheetName) {
             showToast(`"${sheetName}" 고해상도 PDF 다운로드를 시작합니다.`);
-            const blob = new Blob([`[KANNA PIANO CLASS] Official Sheet Music: ${sheetName}\nLicensed to: ${currentUser}\nThank you for your purchase!`], { type: 'text/plain' });
+            const blob = new Blob([`[KANNA PIANO CLASS] Official Sheet Music: ${sheetName}\nLicensed to: ${currentUser}\nNotice: Purchased sheet music is downloadable within 1 month. Once downloaded, it is yours permanently (Permanent Storage).\nCopyright © KANNA. Unauthorized duplication, distribution, or resale is strictly prohibited.`], { type: 'text/plain' });
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
@@ -693,6 +757,69 @@
             a.click();
             window.URL.revokeObjectURL(url);
             document.body.removeChild(a);
+        }
+
+        function submitLessonInquiry() {
+            const name = document.getElementById('inquiryName').value.trim();
+            const birthGender = document.getElementById('inquiryBirthGender').value.trim();
+            const contact = document.getElementById('inquiryContact').value.trim();
+            const region = document.getElementById('inquiryRegion').value.trim();
+            const career = document.getElementById('inquiryCareer').value.trim();
+            const goal = document.getElementById('inquiryGoal').value.trim();
+            const favorite = document.getElementById('inquiryFavorite').value.trim();
+            const worshipChurch = document.getElementById('inquiryWorshipChurch').value.trim();
+            const schedule = document.getElementById('inquirySchedule').value.trim();
+            const notes = document.getElementById('inquiryNotes').value.trim();
+
+            if (!name || !contact) {
+                showToast('이름과 연락처는 필수 입력 항목입니다.');
+                return;
+            }
+
+            const inquiryText = `[칸나피아노 레슨 문의 신청서]
+이름: ${name}
+생년월일 / 성별: ${birthGender}
+연락처: ${contact}
+거주 지역: ${region}
+피아노 경력 및 경험: ${career}
+배우고 싶은 곡 / 스킬: ${goal}
+좋아하는 곡: ${favorite}
+예배 반주 경험 및 출석 교회: ${worshipChurch}
+희망 수업 형태 및 요일/시간대: ${schedule}
+기타 희망 사항 및 유의사항: ${notes}`;
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(inquiryText).then(() => {
+                    showToast('문의 내용이 클립보드에 복사되었습니다! 카카오톡 채널로 이동합니다.');
+                    setTimeout(() => {
+                        window.open('http://pf.kakao.com/_MlAaX', '_blank');
+                    }, 1000);
+                }).catch(() => {
+                    fallbackCopyAndOpen(inquiryText);
+                });
+            } else {
+                fallbackCopyAndOpen(inquiryText);
+            }
+        }
+
+        function fallbackCopyAndOpen(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showToast('문의 내용이 복사되었습니다! 카카오톡 채널로 이동합니다.');
+                setTimeout(() => {
+                    window.open('http://pf.kakao.com/_MlAaX', '_blank');
+                }, 1000);
+            } catch (err) {
+                showToast('복사에 실패했습니다. 카카오톡 채널로 직접 문의해 주세요.');
+                window.open('http://pf.kakao.com/_MlAaX', '_blank');
+            }
+            document.body.removeChild(textArea);
         }
 
         function showToast(message) {
