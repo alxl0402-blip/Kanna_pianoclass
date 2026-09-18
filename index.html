@@ -83,7 +83,6 @@
             <div class="mt-12 w-12 h-[1px] bg-[var(--text-black)]"></div>
         </section>
 
-        <!-- Profile Section -->
         <section id="profile" class="tab-section max-w-6xl mx-auto px-6 py-24 magazine-border">
             <h2 class="font-eng font-bold text-3xl tracking-widest text-[var(--text-black)] pb-6 mb-16 border-b border-[var(--text-black)]">PROFILE.</h2>
             
@@ -149,7 +148,6 @@
             </div>
         </section>
 
-        <!-- Performance Section -->
         <section id="performance" class="tab-section max-w-6xl mx-auto px-6 py-24 magazine-border">
             <h2 class="font-eng font-bold text-3xl tracking-widest text-[var(--text-black)] pb-6 mb-12 border-b border-[var(--text-black)]">PERFORMANCE.</h2>
             
@@ -260,7 +258,6 @@
             </div>
         </section>
 
-        <!-- Lesson Section -->
         <section id="classes" class="tab-section max-w-6xl mx-auto px-6 py-24 magazine-border">
             <h2 class="font-eng font-bold text-3xl tracking-widest text-[var(--text-black)] pb-6 mb-4 border-b border-[var(--text-black)]">LESSON.</h2>
             <p class="text-xs font-light text-[var(--text-black)]/60 tracking-wider mb-8">개개인의 성향과 레벨에 맞춰 1:1 맞춤 커리큘럼을 제공합니다.</p>
@@ -312,7 +309,7 @@
             <!-- Guidance note for lesson application -->
             <div class="mb-16 text-center bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-6 shadow-sm">
                 <p class="text-xs font-light text-[var(--text-black)]/70 leading-relaxed">
-                    💡 확인 후 1~3일 내에 순차적으로 답변을 드립니다. 아래의 <strong class="font-bold text-[var(--text-black)]">레슨 신청서</strong>를 작성해 주세요.
+                    💡 확인 후 1~3일 내에 순차적으로 답변을 드립니다. 아래의 <strong class="font-bold text-[var(--text-black)]">레슨 문의하기</strong>를 작성해 주세요.
                 </p>
             </div>
 
@@ -372,7 +369,7 @@
 
                 <div class="pt-6 border-t border-[var(--text-black)]/10 text-center">
                     <p class="text-xs font-light text-[var(--text-black)]/60 mb-6 leading-relaxed">
-                        아래 항목을 작성 후 버튼을 누르시면 내용이 자동으로 클립보드에 복사되며 카카오톡 채널로 이동합니다. 채팅창에 붙여넣기(Ctrl+V)하여 전송해 주세요. (카카오톡 채널 내에서도 직접 문의가 가능합니다)
+                        아래 항목을 작성 후 버튼을 누르시면 내용이 자동으로 클립보드에 복사되며 카카오톡 채널로 이동합니다. 채팅창에 붙여넣기(Ctrl+V)하여 전송해 주세요. 카카오톡 채널 내에서도 문의가 가능합니다.
                     </p>
                     <button onclick="submitLessonInquiry()" class="px-10 py-4 bg-[var(--text-black)] text-white text-xs font-eng font-bold tracking-widest hover:bg-[var(--pink-point)] transition-all shadow-sm">
                         카카오톡으로 레슨 문의 보내기 ↗
@@ -380,7 +377,7 @@
                 </div>
             </div>
 
-            <!-- Lesson Student Reviews (Placeholder Examples) -->
+            <!-- Lesson Student Reviews -->
             <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-8 md:p-12 shadow-sm">
                 <div class="flex justify-between items-center mb-8 pb-6 border-b border-[var(--text-black)]/10">
                     <div>
@@ -393,14 +390,20 @@
                 <div class="space-y-6">
                     <div class="p-6 bg-[var(--bg-main)] border border-[var(--text-black)]/10">
                         <div class="flex justify-between items-center mb-2">
-                            <span class="font-bold text-sm">김** 수강생 (취미 클래스)</span>
+                            <div>
+                                <span class="font-bold text-sm mr-3">김** 수강생</span>
+                                <span class="text-[11px] bg-pink-100 text-[var(--pink-point)] px-2 py-0.5 font-eng font-bold">취미 클래스</span>
+                            </div>
                             <span class="text-xs text-amber-500 font-eng">★★★★★</span>
                         </div>
                         <p class="text-xs font-light text-[var(--text-black)]/80 leading-relaxed">"코드 이론부터 차근차근 배우면서 좋아하는 뉴에이지 곡을 직접 칠 수 있게 되었어요! 설명도 너무 친절하시고 레슨 시간이 항상 기다려집니다."</p>
                     </div>
                     <div class="p-6 bg-[var(--bg-main)] border border-[var(--text-black)]/10">
                         <div class="flex justify-between items-center mb-2">
-                            <span class="font-bold text-sm">박** 수강생 (CCM 클래스)</span>
+                            <div>
+                                <span class="font-bold text-sm mr-3">박** 수강생</span>
+                                <span class="text-[11px] bg-pink-100 text-[var(--pink-point)] px-2 py-0.5 font-eng font-bold">CCM 클래스</span>
+                            </div>
                             <span class="text-xs text-amber-500 font-eng">★★★★★</span>
                         </div>
                         <p class="text-xs font-light text-[var(--text-black)]/80 leading-relaxed">"교회 찬양팀에서 메인건반을 맡고 있는데 리하모니제이션과 노드 건반 활용법을 배운 뒤로 반주 퀄리티가 완전히 달라졌어요. 강력 추천합니다!"</p>
@@ -409,22 +412,29 @@
             </div>
         </section>
 
-        <!-- Shop Section -->
         <section id="sheet-music" class="tab-section max-w-6xl mx-auto px-6 py-24 magazine-border">
             <h2 class="font-eng font-bold text-3xl tracking-widest text-[var(--text-black)] pb-6 mb-4 border-b border-[var(--text-black)]">SHOP & SHEET.</h2>
-            <p class="text-xs font-light text-[var(--text-black)]/60 tracking-wider mb-12">구매하신 악보는 1개월 내 다운로드 가능하며, 다운로드 완료 시 영구 소장하실 수 있습니다. (무단 공유 및 유출 엄금)</p>
+            <p class="text-xs font-light text-[var(--text-black)]/60 tracking-wider mb-8">구매하신 악보는 1개월 내 다운로드 가능하며, 다운로드 완료 시 영구 소장하실 수 있습니다. (무단 공유 및 유출 엄금)</p>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            <!-- Flexible Search Bar -->
+            <div class="mb-12">
+                <div class="relative max-w-xl">
+                    <input type="text" id="sheetSearchInput" oninput="filterSheetMusic()" placeholder="원하시는 곡이나 키워드를 검색해 보세요 (예: 은혜로, 주품에)" class="w-full px-5 py-4 pl-12 bg-[var(--white-bg)] border border-[var(--text-black)]/20 text-sm focus:outline-none focus:border-[var(--pink-point)] shadow-sm">
+                    <svg class="w-5 h-5 text-[var(--text-black)]/40 absolute left-4 top-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                </div>
+            </div>
+
+            <div id="sheetGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
                 <!-- Sheet Item 1 -->
-                <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-6 flex flex-col justify-between group shadow-sm">
+                <div class="sheet-card bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-6 flex flex-col justify-between group shadow-sm" data-title="아 하나님의 은혜로 Piano Solo" data-desc="고해상도 PDF 악보 리하모니제이션 피아노 솔로">
                     <div>
-                        <div class="aspect-[4/3] bg-stone-100 mb-6 overflow-hidden relative border border-stone-200">
+                        <div class="aspect-[4/3] bg-stone-100 mb-6 overflow-hidden relative border border-stone-200 cursor-pointer" onclick="openSheetDetail('sheet1')">
                             <img src="https://placehold.co/600x450/FAF3F5/111?text=Kanna+Piano+Sheet+1" alt="Sheet 1 Preview" class="w-full h-full object-cover filter blur-[3px] scale-105 opacity-80 group-hover:scale-110 transition-transform duration-700">
                             <div class="absolute inset-0 bg-black/10 flex items-center justify-center">
-                                <span class="bg-black/70 text-white text-[10px] font-eng font-bold tracking-widest px-3 py-1.5 uppercase backdrop-blur-sm">PREVIEW (PDF)</span>
+                                <span class="bg-black/70 text-white text-[10px] font-eng font-bold tracking-widest px-3 py-1.5 uppercase backdrop-blur-sm">상세보기 & 미리보기</span>
                             </div>
                         </div>
-                        <h3 class="font-bold text-lg text-[var(--text-black)] mb-2">아 하나님의 은혜로 (Piano Solo)</h3>
+                        <h3 class="font-bold text-lg text-[var(--text-black)] mb-2 cursor-pointer hover:text-[var(--pink-point)] transition-colors" onclick="openSheetDetail('sheet1')">아 하나님의 은혜로 (Piano Solo)</h3>
                         <p class="text-xs text-[var(--text-black)]/60 mb-4 font-light">고해상도 PDF 악보 (1개월 내 다운로드 / 영구 소장)</p>
                     </div>
                     <div class="pt-4 border-t border-[var(--text-black)]/10">
@@ -439,15 +449,15 @@
                 </div>
 
                 <!-- Sheet Item 2 -->
-                <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-6 flex flex-col justify-between group shadow-sm">
+                <div class="sheet-card bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-6 flex flex-col justify-between group shadow-sm" data-title="주 품에 Jazz Ver." data-desc="고해상도 PDF 악보 재즈 세련된 편곡 주품에">
                     <div>
-                        <div class="aspect-[4/3] bg-stone-100 mb-6 overflow-hidden relative border border-stone-200">
+                        <div class="aspect-[4/3] bg-stone-100 mb-6 overflow-hidden relative border border-stone-200 cursor-pointer" onclick="openSheetDetail('sheet2')">
                             <img src="https://placehold.co/600x450/FAF3F5/111?text=Kanna+Piano+Sheet+2" alt="Sheet 2 Preview" class="w-full h-full object-cover filter blur-[3px] scale-105 opacity-80 group-hover:scale-110 transition-transform duration-700">
                             <div class="absolute inset-0 bg-black/10 flex items-center justify-center">
-                                <span class="bg-black/70 text-white text-[10px] font-eng font-bold tracking-widest px-3 py-1.5 uppercase backdrop-blur-sm">PREVIEW (PDF)</span>
+                                <span class="bg-black/70 text-white text-[10px] font-eng font-bold tracking-widest px-3 py-1.5 uppercase backdrop-blur-sm">상세보기 & 미리보기</span>
                             </div>
                         </div>
-                        <h3 class="font-bold text-lg text-[var(--text-black)] mb-2">주 품에 (Jazz Ver.)</h3>
+                        <h3 class="font-bold text-lg text-[var(--text-black)] mb-2 cursor-pointer hover:text-[var(--pink-point)] transition-colors" onclick="openSheetDetail('sheet2')">주 품에 (Jazz Ver.)</h3>
                         <p class="text-xs text-[var(--text-black)]/60 mb-4 font-light">고해상도 PDF 악보 (1개월 내 다운로드 / 영구 소장)</p>
                     </div>
                     <div class="pt-4 border-t border-[var(--text-black)]/10">
@@ -462,7 +472,7 @@
                 </div>
 
                 <!-- Custom Order Item -->
-                <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-6 flex flex-col justify-between group shadow-sm">
+                <div class="sheet-card bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-6 flex flex-col justify-between group shadow-sm" data-title="레코딩 편곡 작업 의뢰 맞춤" data-desc="맞춤 의뢰 및 상담 레코딩 편곡 세션">
                     <div>
                         <div class="aspect-[4/3] bg-[var(--bg-main)] mb-6 overflow-hidden relative flex items-center justify-center p-6 text-center border border-[var(--text-black)]/10">
                             <span class="font-eng font-bold text-sm text-[var(--text-black)] tracking-widest">RECORDING & ARRANGING</span>
@@ -513,9 +523,7 @@
             </div>
         </section>
 
-        <!-- Inquiry & Footer Section -->
         <section id="inquiry" class="max-w-6xl mx-auto px-6 py-24 text-center">
-            <h2 class="font-eng font-bold text-xs tracking-[0.3em] text-[var(--pink-point)] mb-4 uppercase">GET IN TOUCH</h2>
             <h3 class="text-3xl md:text-4xl font-bold text-[var(--text-black)] mb-8">레슨 및 작업 문의</h3>
             <div class="flex justify-center mb-16">
                 <a href="http://pf.kakao.com/_MlAaX" target="_blank" class="px-10 py-4 bg-[var(--text-black)] text-white font-eng font-bold text-xs tracking-widest hover:bg-[var(--pink-point)] transition-all shadow-sm">문의하기 (카카오톡)</a>
@@ -618,6 +626,35 @@
         </div>
     </div>
 
+    <!-- Sheet Detail Modal (Mafia/Pro style) -->
+    <div id="sheetDetailModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center px-4">
+        <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-8 md:p-10 max-w-2xl w-full shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeSheetDetail()" class="absolute top-6 right-6 text-[var(--text-black)]/60 hover:text-[var(--text-black)]">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <span id="detailBadge" class="text-[10px] bg-pink-100 text-[var(--pink-point)] px-2.5 py-1 font-eng font-bold uppercase tracking-widest mb-3 inline-block">SHEET MUSIC DETAIL</span>
+            <h3 id="detailTitle" class="text-2xl font-bold text-[var(--text-black)] mb-2">악보 제목</h3>
+            <p id="detailPrice" class="font-eng font-bold text-lg text-[var(--pink-point)] mb-6">0 KRW</p>
+
+            <!-- Embedded Preview YouTube Video -->
+            <div id="detailVideoContainer" class="aspect-video bg-neutral-900 mb-6 rounded overflow-hidden shadow-sm">
+                <!-- YouTube iframe inserted dynamically -->
+            </div>
+
+            <div class="space-y-4 mb-8">
+                <h4 class="font-bold text-sm text-[var(--text-black)] border-b border-[var(--text-black)]/10 pb-2">편곡 및 연주 노트</h4>
+                <p id="detailDescription" class="text-xs font-light text-[var(--text-black)]/80 leading-relaxed">
+                    상세 설명이 들어갑니다.
+                </p>
+            </div>
+
+            <div class="flex space-x-4 pt-4 border-t border-[var(--text-black)]/10">
+                <button id="detailCartBtn" class="w-1/2 py-3.5 bg-stone-200 text-stone-800 text-xs font-eng font-bold tracking-widest hover:bg-stone-300 transition-colors">장바구니 담기</button>
+                <button id="detailBuyBtn" class="w-1/2 py-3.5 bg-[var(--text-black)] text-white text-xs font-eng font-bold tracking-widest hover:bg-[var(--pink-point)] transition-colors">바로 구매하기</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Cart Drawer Modal -->
     <div id="cartDrawer" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex justify-end">
         <div class="bg-[var(--white-bg)] w-full max-w-md h-full shadow-2xl flex flex-col justify-between p-6 transform transition-transform duration-300">
@@ -654,6 +691,24 @@
         let cart = [];
         let purchasedItems = {}; // track purchased items per session (e.g., {'sheet1': '아 하나님의 은혜로 (Piano Solo)'})
 
+        // Sheet details data for professional modal
+        const sheetDatabase = {
+            'sheet1': {
+                id: 'sheet1',
+                name: '아 하나님의 은혜로 (Piano Solo)',
+                price: 5000,
+                videoId: 'sWxguAdJhLQ',
+                description: '찬송가 "아 하나님의 은혜로"를 칸나쌤만의 섬세하고 감성적인 재즈 보이싱과 리하모니제이션으로 재해석한 피아노 솔로 악보입니다. 풍성한 텐션 코드로 예배 묵상 시간이나 연주회 무대에서 깊은 감동을 선사합니다.'
+            },
+            'sheet2': {
+                id: 'sheet2',
+                name: '주 품에 (Jazz Ver.)',
+                price: 5000,
+                videoId: 'JohUn2I6WMQ',
+                description: '익숙한 찬양 "주 품에"를 세련된 재즈 그루브와 감각적인 리하모니제이션으로 편곡한 악보입니다. 건반 연주자들이 꼭 한 번 연주해보고 싶어 하는 대표 베스트셀러 편곡 버전입니다.'
+            }
+        };
+
         function showSection(sectionId) {
             const sections = document.querySelectorAll('.tab-section');
             sections.forEach(sec => sec.classList.remove('active'));
@@ -668,6 +723,49 @@
                 target.classList.add('active');
                 target.scrollIntoView({ behavior: 'smooth' });
             }
+        }
+
+        // Flexible search with whitespace and case insensitivity
+        function filterSheetMusic() {
+            const query = document.getElementById('sheetSearchInput').value.toLowerCase().replace(/\s+/g, '');
+            const cards = document.querySelectorAll('.sheet-card');
+            cards.forEach(card => {
+                const title = card.getAttribute('data-title').toLowerCase().replace(/\s+/g, '');
+                const desc = card.getAttribute('data-desc').toLowerCase().replace(/\s+/g, '');
+                if (title.includes(query) || desc.includes(query)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function openSheetDetail(sheetId) {
+            const data = sheetDatabase[sheetId];
+            if (!data) return;
+
+            document.getElementById('detailTitle').innerText = data.name;
+            document.getElementById('detailPrice').innerText = data.price.toLocaleString() + ' KRW';
+            document.getElementById('detailDescription').innerText = data.description;
+            document.getElementById('detailVideoContainer').innerHTML = `
+                <iframe class="w-full h-full" src="https://www.youtube.com/embed/${data.videoId}" title="${data.name}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            `;
+
+            document.getElementById('detailCartBtn').onclick = () => {
+                addToCart(data.id, data.name, data.price);
+                closeSheetDetail();
+            };
+            document.getElementById('detailBuyBtn').onclick = () => {
+                closeSheetDetail();
+                handleSheetAction(data.name, data.price, data.id);
+            };
+
+            document.getElementById('sheetDetailModal').classList.remove('hidden');
+        }
+
+        function closeSheetDetail() {
+            document.getElementById('sheetDetailModal').classList.add('hidden');
+            document.getElementById('detailVideoContainer').innerHTML = '';
         }
 
         function openLoginModal() {
@@ -858,7 +956,7 @@
 
             const purchasedKeys = Object.keys(purchasedItems);
             if (purchasedKeys.length === 0) {
-                showToast('악보를 구매하신 회원만 후기를 작성할 수 있습니다.');
+                showToast('악보를 실제로 구매하신 회원만 후기를 작성할 수 있습니다.');
                 return;
             }
 
