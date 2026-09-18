@@ -59,7 +59,15 @@
                 <button onclick="showSection('sheet-music')" class="nav-btn hover:text-[var(--pink-point)] transition duration-300">Shop</button>
             </nav>
             
-            <div class="flex items-center">
+            <div class="flex items-center space-x-6">
+                <div id="authArea" class="flex items-center space-x-3">
+                    <button onclick="openLoginModal()" class="text-[11px] font-eng font-bold tracking-widest text-[var(--text-black)]/70 hover:text-[var(--pink-point)] transition duration-300">LOG IN</button>
+                </div>
+                <!-- Cart Button with Badge -->
+                <button onclick="toggleCartDrawer()" class="relative text-[var(--text-black)] hover:text-[var(--pink-point)] transition duration-300 flex items-center" aria-label="Cart">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                    <span id="cartBadge" class="absolute -top-2 -right-2 bg-[var(--pink-point)] text-white text-[9px] font-eng font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+                </button>
                 <a href="http://pf.kakao.com/_MlAaX" target="_blank" class="text-[11px] font-eng font-bold tracking-widest text-[var(--text-black)] hover:text-[var(--pink-point)] transition duration-300">CONTACT</a>
             </div>
         </div>
@@ -75,6 +83,7 @@
             <div class="mt-12 w-12 h-[1px] bg-[var(--text-black)]"></div>
         </section>
 
+        <!-- Profile Section -->
         <section id="profile" class="tab-section max-w-6xl mx-auto px-6 py-24 magazine-border">
             <h2 class="font-eng font-bold text-3xl tracking-widest text-[var(--text-black)] pb-6 mb-16 border-b border-[var(--text-black)]">PROFILE.</h2>
             
@@ -140,6 +149,7 @@
             </div>
         </section>
 
+        <!-- Performance Section -->
         <section id="performance" class="tab-section max-w-6xl mx-auto px-6 py-24 magazine-border">
             <h2 class="font-eng font-bold text-3xl tracking-widest text-[var(--text-black)] pb-6 mb-12 border-b border-[var(--text-black)]">PERFORMANCE.</h2>
             
@@ -147,14 +157,14 @@
                 <!-- Video 1 -->
                 <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-6 flex flex-col justify-between group shadow-sm">
                     <div>
-                        <a href="https://youtu.be/sWxguAdJhLQ" target="_blank" class="block aspect-video bg-[var(--bg-main)] mb-6 relative overflow-hidden flex items-center justify-center group/thumb">
-                            <img src="https://img.youtube.com/vi/sWxguAdJhLQ/hqdefault.jpg" alt="아 하나님의 은혜로" class="w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x338/FAF3F5/111?text=YouTube+Video'">
-                            <div class="absolute inset-0 bg-black/20 group-hover/thumb:bg-black/40 transition-colors flex items-center justify-center">
-                                <div class="w-16 h-12 bg-red-600 rounded-xl flex items-center justify-center text-white shadow-lg group-hover/thumb:scale-110 transition-transform">
-                                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <div class="aspect-video bg-neutral-900 mb-6 relative overflow-hidden flex items-center justify-center group/thumb cursor-pointer" onclick="window.open('https://youtu.be/sWxguAdJhLQ', '_blank')">
+                            <img src="https://img.youtube.com/vi/sWxguAdJhLQ/hqdefault.jpg" alt="아 하나님의 은혜로" class="w-full h-full object-cover opacity-90 group-hover/thumb:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-black/30 group-hover/thumb:bg-black/40 transition-colors flex items-center justify-center">
+                                <div class="w-14 h-10 bg-red-600 rounded-xl flex items-center justify-center text-white shadow-lg group-hover/thumb:scale-110 transition-transform">
+                                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                         <h3 class="font-bold text-lg text-[var(--text-black)] mb-2">아 하나님의 은혜로</h3>
                         <p class="text-xs text-[var(--text-black)]/60 mb-6 font-light">칸나쌤 연주, 리하모니</p>
                     </div>
@@ -166,14 +176,14 @@
                 <!-- Video 2 -->
                 <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-6 flex flex-col justify-between group shadow-sm">
                     <div>
-                        <a href="https://youtu.be/JohUn2I6WMQ" target="_blank" class="block aspect-video bg-[var(--bg-main)] mb-6 relative overflow-hidden flex items-center justify-center group/thumb">
-                            <img src="https://img.youtube.com/vi/JohUn2I6WMQ/hqdefault.jpg" alt="주 품에" class="w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x338/FAF3F5/111?text=YouTube+Video'">
-                            <div class="absolute inset-0 bg-black/20 group-hover/thumb:bg-black/40 transition-colors flex items-center justify-center">
-                                <div class="w-16 h-12 bg-red-600 rounded-xl flex items-center justify-center text-white shadow-lg group-hover/thumb:scale-110 transition-transform">
-                                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <div class="aspect-video bg-neutral-900 mb-6 relative overflow-hidden flex items-center justify-center group/thumb cursor-pointer" onclick="window.open('https://youtu.be/JohUn2I6WMQ', '_blank')">
+                            <img src="https://img.youtube.com/vi/JohUn2I6WMQ/hqdefault.jpg" alt="주 품에" class="w-full h-full object-cover opacity-90 group-hover/thumb:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-black/30 group-hover/thumb:bg-black/40 transition-colors flex items-center justify-center">
+                                <div class="w-14 h-10 bg-red-600 rounded-xl flex items-center justify-center text-white shadow-lg group-hover/thumb:scale-110 transition-transform">
+                                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                         <h3 class="font-bold text-lg text-[var(--text-black)] mb-2">주 품에</h3>
                         <p class="text-xs text-[var(--text-black)]/60 mb-6 font-light">칸나쌤 연주, 편곡</p>
                     </div>
@@ -185,14 +195,14 @@
                 <!-- Video 3 -->
                 <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-6 flex flex-col justify-between group shadow-sm">
                     <div>
-                        <a href="https://youtu.be/Vqjas3V156g" target="_blank" class="block aspect-video bg-[var(--bg-main)] mb-6 relative overflow-hidden flex items-center justify-center group/thumb">
-                            <img src="https://img.youtube.com/vi/Vqjas3V156g/hqdefault.jpg" alt="온전케 되리" class="w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x338/FAF3F5/111?text=YouTube+Video'">
-                            <div class="absolute inset-0 bg-black/20 group-hover/thumb:bg-black/40 transition-colors flex items-center justify-center">
-                                <div class="w-16 h-12 bg-red-600 rounded-xl flex items-center justify-center text-white shadow-lg group-hover/thumb:scale-110 transition-transform">
-                                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <div class="aspect-video bg-neutral-900 mb-6 relative overflow-hidden flex items-center justify-center group/thumb cursor-pointer" onclick="window.open('https://youtu.be/Vqjas3V156g', '_blank')">
+                            <img src="https://img.youtube.com/vi/Vqjas3V156g/hqdefault.jpg" alt="온전케 되리" class="w-full h-full object-cover opacity-90 group-hover/thumb:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-black/30 group-hover/thumb:bg-black/40 transition-colors flex items-center justify-center">
+                                <div class="w-14 h-10 bg-red-600 rounded-xl flex items-center justify-center text-white shadow-lg group-hover/thumb:scale-110 transition-transform">
+                                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                         <h3 class="font-bold text-lg text-[var(--text-black)] mb-2">온전케 되리</h3>
                         <p class="text-xs text-[var(--text-black)]/60 mb-6 font-light">묵상 피아노 ver.</p>
                     </div>
@@ -204,14 +214,14 @@
                 <!-- Video 4 -->
                 <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-6 flex flex-col justify-between group shadow-sm">
                     <div>
-                        <a href="https://youtu.be/-dLv6vsMFjo" target="_blank" class="block aspect-video bg-[var(--bg-main)] mb-6 relative overflow-hidden flex items-center justify-center group/thumb">
-                            <img src="https://img.youtube.com/vi/-dLv6vsMFjo/hqdefault.jpg" alt="주와 같이 길 가는 것" class="w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x338/FAF3F5/111?text=YouTube+Video'">
-                            <div class="absolute inset-0 bg-black/20 group-hover/thumb:bg-black/40 transition-colors flex items-center justify-center">
-                                <div class="w-16 h-12 bg-red-600 rounded-xl flex items-center justify-center text-white shadow-lg group-hover/thumb:scale-110 transition-transform">
-                                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <div class="aspect-video bg-neutral-900 mb-6 relative overflow-hidden flex items-center justify-center group/thumb cursor-pointer" onclick="window.open('https://youtu.be/-dLv6vsMFjo', '_blank')">
+                            <img src="https://img.youtube.com/vi/-dLv6vsMFjo/hqdefault.jpg" alt="주와 같이 길 가는 것" class="w-full h-full object-cover opacity-90 group-hover/thumb:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-black/30 group-hover/thumb:bg-black/40 transition-colors flex items-center justify-center">
+                                <div class="w-14 h-10 bg-red-600 rounded-xl flex items-center justify-center text-white shadow-lg group-hover/thumb:scale-110 transition-transform">
+                                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                         <h3 class="font-bold text-lg text-[var(--text-black)] mb-2">주와 같이 길 가는 것</h3>
                         <p class="text-xs text-[var(--text-black)]/60 mb-6 font-light">칸나쌤 피아노 연주</p>
                     </div>
@@ -223,14 +233,14 @@
                 <!-- Video 5 -->
                 <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-6 flex flex-col justify-between group shadow-sm">
                     <div>
-                        <a href="https://youtu.be/KxDaP8B13F8" target="_blank" class="block aspect-video bg-[var(--bg-main)] mb-6 relative overflow-hidden flex items-center justify-center group/thumb">
-                            <img src="https://img.youtube.com/vi/KxDaP8B13F8/hqdefault.jpg" alt="나의 영혼이 잠잠히" class="w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x338/FAF3F5/111?text=YouTube+Video'">
-                            <div class="absolute inset-0 bg-black/20 group-hover/thumb:bg-black/40 transition-colors flex items-center justify-center">
-                                <div class="w-16 h-12 bg-red-600 rounded-xl flex items-center justify-center text-white shadow-lg group-hover/thumb:scale-110 transition-transform">
-                                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <div class="aspect-video bg-neutral-900 mb-6 relative overflow-hidden flex items-center justify-center group/thumb cursor-pointer" onclick="window.open('https://youtu.be/KxDaP8B13F8', '_blank')">
+                            <img src="https://img.youtube.com/vi/KxDaP8B13F8/hqdefault.jpg" alt="나의 영혼이 잠잠히" class="w-full h-full object-cover opacity-90 group-hover/thumb:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-black/30 group-hover/thumb:bg-black/40 transition-colors flex items-center justify-center">
+                                <div class="w-14 h-10 bg-red-600 rounded-xl flex items-center justify-center text-white shadow-lg group-hover/thumb:scale-110 transition-transform">
+                                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                         <h3 class="font-bold text-lg text-[var(--text-black)] mb-2">나의 영혼이 잠잠히</h3>
                         <p class="text-xs text-[var(--text-black)]/60 mb-4 font-light">재즈 보이싱 버전</p>
                     </div>
@@ -241,7 +251,7 @@
             </div>
 
             <!-- Subtle notice at the bottom -->
-            <div class="mt-12 text-center">
+            <div class="mt-8 text-center">
                 <p class="text-[11px] font-light text-[var(--text-black)]/40 tracking-wider">
                     더 다양한 영상은 
                     <a href="https://www.youtube.com/@%EC%B9%B8%EB%82%98%ED%94%BC%EC%95%84%EB%85%B8" target="_blank" class="text-[var(--text-black)]/60 hover:text-[var(--pink-point)] underline transition-colors mx-0.5">유튜브</a>와 
@@ -250,6 +260,7 @@
             </div>
         </section>
 
+        <!-- Class Section -->
         <section id="classes" class="tab-section max-w-6xl mx-auto px-6 py-24 magazine-border">
             <h2 class="font-eng font-bold text-3xl tracking-widest text-[var(--text-black)] pb-6 mb-4 border-b border-[var(--text-black)]">CLASS.</h2>
             <p class="text-xs font-light text-[var(--text-black)]/60 tracking-wider mb-8">개개인의 성향과 레벨에 맞춰 1:1 맞춤 커리큘럼을 제공합니다.</p>
@@ -316,45 +327,65 @@
             </div>
         </section>
 
+        <!-- Shop Section -->
         <section id="sheet-music" class="tab-section max-w-6xl mx-auto px-6 py-24 magazine-border">
             <h2 class="font-eng font-bold text-3xl tracking-widest text-[var(--text-black)] pb-6 mb-12 border-b border-[var(--text-black)]">SHOP & SHEET.</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Sheet Item 1 -->
                 <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-6 flex flex-col justify-between group shadow-sm">
                     <div>
-                        <div class="aspect-[4/3] bg-[var(--bg-main)] mb-6 overflow-hidden relative">
-                            <img src="https://placehold.co/600x450/FAF3F5/111?text=Sheet+Music+1" alt="Sheet 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x450/FAF3F5/111?text=Sheet+Music+1'">
+                        <div class="aspect-[4/3] bg-stone-100 mb-6 overflow-hidden relative border border-stone-200">
+                            <img src="https://placehold.co/600x450/FAF3F5/111?text=Kanna+Piano+Sheet+1" alt="Sheet 1 Preview" class="w-full h-full object-cover filter blur-[3px] scale-105 opacity-80 group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-black/10 flex items-center justify-center">
+                                <span class="bg-black/70 text-white text-[10px] font-eng font-bold tracking-widest px-3 py-1.5 uppercase backdrop-blur-sm">PREVIEW (PDF)</span>
+                            </div>
                         </div>
                         <h3 class="font-bold text-lg text-[var(--text-black)] mb-2">아 하나님의 은혜로 (Piano Solo)</h3>
-                        <p class="text-xs text-[var(--text-black)]/60 mb-4 font-light">리하모니제이션 버전 악보 (PDF)</p>
+                        <p class="text-xs text-[var(--text-black)]/60 mb-4 font-light">고해상도 PDF 악보</p>
                     </div>
-                    <div class="flex items-center justify-between pt-4 border-t border-[var(--text-black)]/10">
-                        <span class="font-eng font-bold text-base">5,000 KRW</span>
-                        <a href="http://pf.kakao.com/_MlAaX" target="_blank" class="px-5 py-2 bg-[var(--text-black)] text-white text-xs font-eng font-bold tracking-widest hover:bg-[var(--pink-point)] transition-colors">BUY</a>
+                    <div class="pt-4 border-t border-[var(--text-black)]/10">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="font-eng font-bold text-base">5,000 KRW</span>
+                        </div>
+                        <div id="item1-action" class="grid grid-cols-2 gap-2">
+                            <button onclick="addToCart('sheet1', '아 하나님의 은혜로 (Piano Solo)', 5000)" class="py-2.5 bg-stone-200 text-stone-800 text-[11px] font-eng font-bold tracking-wider hover:bg-stone-300 transition-colors">담기</button>
+                            <button onclick="handleSheetAction('아 하나님의 은혜로 (Piano Solo)', 5000, 'sheet1')" class="py-2.5 bg-[var(--text-black)] text-white text-[11px] font-eng font-bold tracking-wider hover:bg-[var(--pink-point)] transition-colors">BUY</button>
+                        </div>
                     </div>
                 </div>
 
+                <!-- Sheet Item 2 -->
                 <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-6 flex flex-col justify-between group shadow-sm">
                     <div>
-                        <div class="aspect-[4/3] bg-[var(--bg-main)] mb-6 overflow-hidden relative">
-                            <img src="https://placehold.co/600x450/FAF3F5/111?text=Sheet+Music+2" alt="Sheet 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x450/FAF3F5/111?text=Sheet+Music+2'">
+                        <div class="aspect-[4/3] bg-stone-100 mb-6 overflow-hidden relative border border-stone-200">
+                            <img src="https://placehold.co/600x450/FAF3F5/111?text=Kanna+Piano+Sheet+2" alt="Sheet 2 Preview" class="w-full h-full object-cover filter blur-[3px] scale-105 opacity-80 group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-black/10 flex items-center justify-center">
+                                <span class="bg-black/70 text-white text-[10px] font-eng font-bold tracking-widest px-3 py-1.5 uppercase backdrop-blur-sm">PREVIEW (PDF)</span>
+                            </div>
                         </div>
                         <h3 class="font-bold text-lg text-[var(--text-black)] mb-2">주 품에 (Jazz Ver.)</h3>
-                        <p class="text-xs text-[var(--text-black)]/60 mb-4 font-light">재즈 보이싱 및 편곡 악보 (PDF)</p>
+                        <p class="text-xs text-[var(--text-black)]/60 mb-4 font-light">고해상도 PDF 악보</p>
                     </div>
-                    <div class="flex items-center justify-between pt-4 border-t border-[var(--text-black)]/10">
-                        <span class="font-eng font-bold text-base">5,000 KRW</span>
-                        <a href="http://pf.kakao.com/_MlAaX" target="_blank" class="px-5 py-2 bg-[var(--text-black)] text-white text-xs font-eng font-bold tracking-widest hover:bg-[var(--pink-point)] transition-colors">BUY</a>
+                    <div class="pt-4 border-t border-[var(--text-black)]/10">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="font-eng font-bold text-base">5,000 KRW</span>
+                        </div>
+                        <div id="item2-action" class="grid grid-cols-2 gap-2">
+                            <button onclick="addToCart('sheet2', '주 품에 (Jazz Ver.)', 5000)" class="py-2.5 bg-stone-200 text-stone-800 text-[11px] font-eng font-bold tracking-wider hover:bg-stone-300 transition-colors">담기</button>
+                            <button onclick="handleSheetAction('주 품에 (Jazz Ver.)', 5000, 'sheet2')" class="py-2.5 bg-[var(--text-black)] text-white text-[11px] font-eng font-bold tracking-wider hover:bg-[var(--pink-point)] transition-colors">BUY</button>
+                        </div>
                     </div>
                 </div>
 
+                <!-- Custom Order Item -->
                 <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-6 flex flex-col justify-between group shadow-sm">
                     <div>
-                        <div class="aspect-[4/3] bg-[var(--bg-main)] mb-6 overflow-hidden relative flex items-center justify-center p-6 text-center">
+                        <div class="aspect-[4/3] bg-[var(--bg-main)] mb-6 overflow-hidden relative flex items-center justify-center p-6 text-center border border-[var(--text-black)]/10">
                             <span class="font-eng font-bold text-sm text-[var(--text-black)] tracking-widest">RECORDING & ARRANGING</span>
                         </div>
                         <h3 class="font-bold text-lg text-[var(--text-black)] mb-2">레코딩 & 편곡 작업 의뢰</h3>
-                        <p class="text-xs text-[var(--text-black)]/60 mb-4 font-light">건반 세션 및 음원 편곡, MR 제작 맞춤 의뢰</p>
+                        <p class="text-xs text-[var(--text-black)]/60 mb-4 font-light">맞춤 의뢰 및 상담</p>
                     </div>
                     <div class="flex items-center justify-between pt-4 border-t border-[var(--text-black)]/10">
                         <span class="font-eng font-bold text-xs text-[var(--pink-point)]">CUSTOM ORDER</span>
@@ -364,6 +395,7 @@
             </div>
         </section>
 
+        <!-- Inquiry & Footer Section -->
         <section id="inquiry" class="max-w-6xl mx-auto px-6 py-24 text-center">
             <h2 class="font-eng font-bold text-xs tracking-[0.3em] text-[var(--pink-point)] mb-4 uppercase">GET IN TOUCH</h2>
             <h3 class="text-3xl md:text-4xl font-bold text-[var(--text-black)] mb-8">레슨 및 작업 문의</h3>
@@ -372,11 +404,9 @@
             </div>
 
             <div class="flex justify-center space-x-6 mb-16">
-                <!-- Instagram Icon -->
                 <a href="https://www.instagram.com/kanna_pianoclass/" target="_blank" class="w-12 h-12 bg-white border border-[var(--text-black)]/10 rounded-full flex items-center justify-center hover:bg-[var(--pink-point)] hover:text-white transition-all transform hover:-translate-y-1" aria-label="Instagram">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                 </a>
-                <!-- YouTube Icon -->
                 <a href="https://www.youtube.com/@%EC%B9%B8%EB%82%98%ED%94%BC%EC%95%84%EB%85%B8" target="_blank" class="w-12 h-12 bg-white border border-[var(--text-black)]/10 rounded-full flex items-center justify-center hover:bg-[var(--pink-point)] hover:text-white transition-all transform hover:-translate-y-1" aria-label="YouTube">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                 </a>
@@ -386,9 +416,90 @@
         </section>
     </main>
 
+    <!-- Login Modal -->
+    <div id="loginModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center px-4">
+        <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-8 max-w-md w-full shadow-2xl relative">
+            <h3 class="font-eng font-bold text-xl mb-2">LOGIN</h3>
+            <p class="text-xs text-[var(--text-black)]/60 mb-6 font-light">악보 구매 및 다운로드를 위해 간단히 로그인해 주세요.</p>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-[var(--text-black)] mb-2 uppercase font-eng">Nickname</label>
+                    <input type="text" id="loginNickname" placeholder="사용하실 닉네임을 입력하세요" class="w-full px-4 py-3 bg-[var(--bg-main)] border border-[var(--text-black)]/20 text-sm focus:outline-none focus:border-[var(--pink-point)]">
+                </div>
+                <div class="flex space-x-4 pt-4">
+                    <button onclick="closeLoginModal()" class="w-1/2 py-3 bg-stone-200 text-stone-800 text-xs font-eng font-bold tracking-widest hover:bg-stone-300 transition-colors">CANCEL</button>
+                    <button onclick="processLogin()" class="w-1/2 py-3 bg-[var(--text-black)] text-white text-xs font-eng font-bold tracking-widest hover:bg-[var(--pink-point)] transition-colors">LOG IN</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center px-4">
+        <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-8 max-w-md w-full shadow-2xl relative">
+            <h3 class="font-eng font-bold text-xl mb-2">SECURE CHECKOUT</h3>
+            <p id="paymentItemDesc" class="text-xs text-[var(--text-black)]/60 mb-6 font-light">결제 후 즉시 PDF 다운로드가 가능합니다.</p>
+            
+            <div class="bg-[var(--bg-main)] p-4 border border-[var(--text-black)]/10 mb-6 flex justify-between items-center">
+                <span id="paymentItemName" class="text-sm font-bold">상품명</span>
+                <span id="paymentItemPrice" class="font-eng font-bold text-base text-[var(--pink-point)]">0 KRW</span>
+            </div>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-[var(--text-black)] mb-2 uppercase font-eng">Payment Method</label>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button type="button" class="py-3 border border-[var(--pink-point)] bg-[var(--pink-point)]/10 text-xs font-eng font-bold text-[var(--text-black)]">CARD / TOSS</button>
+                        <button type="button" class="py-3 border border-[var(--text-black)]/20 text-xs font-eng font-bold text-[var(--text-black)]/60">KAKAOPAY</button>
+                    </div>
+                </div>
+
+                <div class="flex space-x-4 pt-4">
+                    <button onclick="closePaymentModal()" class="w-1/2 py-3 bg-stone-200 text-stone-800 text-xs font-eng font-bold tracking-widest hover:bg-stone-300 transition-colors">CANCEL</button>
+                    <button onclick="executePayment()" class="w-1/2 py-3 bg-[var(--text-black)] text-white text-xs font-eng font-bold tracking-widest hover:bg-[var(--pink-point)] transition-colors">PAY NOW</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Drawer Modal -->
+    <div id="cartDrawer" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex justify-end">
+        <div class="bg-[var(--white-bg)] w-full max-w-md h-full shadow-2xl flex flex-col justify-between p-6 transform transition-transform duration-300">
+            <div>
+                <div class="flex items-center justify-between pb-6 border-b border-[var(--text-black)]/10">
+                    <h3 class="font-eng font-bold text-xl">SHOPPING CART</h3>
+                    <button onclick="toggleCartDrawer()" class="text-[var(--text-black)]/60 hover:text-[var(--text-black)]">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>
+                <div id="cartItemsList" class="py-6 space-y-4 max-h-[60vh] overflow-y-auto">
+                    <!-- Cart items rendered dynamically -->
+                    <p class="text-xs text-[var(--text-black)]/50 text-center py-8">장바구니가 비어 있습니다.</p>
+                </div>
+            </div>
+            
+            <div class="pt-6 border-t border-[var(--text-black)]/10">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="text-sm font-bold">총 결제 금액</span>
+                    <span id="cartTotalPrice" class="font-eng font-bold text-lg text-[var(--pink-point)]">0 KRW</span>
+                </div>
+                <button onclick="checkoutCart()" class="w-full py-4 bg-[var(--text-black)] text-white text-xs font-eng font-bold tracking-widest hover:bg-[var(--pink-point)] transition-colors">PROCEED TO CHECKOUT</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Message Box -->
+    <div id="toastMessage" class="fixed bottom-8 right-8 z-50 bg-[var(--text-black)] text-white px-6 py-4 text-xs font-light tracking-wide shadow-2xl transform translate-y-32 opacity-0 transition-all duration-300">
+        알림 메시지입니다.
+    </div>
+
     <script>
+        let currentUser = null;
+        let currentItem = null;
+        let cart = [];
+        let purchasedItems = {}; // track purchased items per session
+
         function showSection(sectionId) {
-            // Hide all tab sections
             const sections = document.querySelectorAll('.tab-section');
             sections.forEach(sec => sec.classList.remove('active'));
 
@@ -397,12 +508,200 @@
                 return;
             }
 
-            // Show selected section
             const target = document.getElementById(sectionId);
             if (target) {
                 target.classList.add('active');
                 target.scrollIntoView({ behavior: 'smooth' });
             }
+        }
+
+        function openLoginModal() {
+            document.getElementById('loginModal').classList.remove('hidden');
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').classList.add('hidden');
+        }
+
+        function processLogin() {
+            const nickname = document.getElementById('loginNickname').value.trim();
+            if (!nickname) {
+                showToast('닉네임을 입력해 주세요.');
+                return;
+            }
+            currentUser = nickname;
+            document.getElementById('authArea').innerHTML = `
+                <span class="text-[11px] font-eng font-bold text-[var(--pink-point)]">${currentUser}님</span>
+                <button onclick="logout()" class="text-[11px] font-eng font-bold tracking-widest text-[var(--text-black)]/70 hover:text-[var(--pink-point)] transition duration-300">LOG OUT</button>
+            `;
+            closeLoginModal();
+            showToast(`${currentUser}님 환영합니다!`);
+        }
+
+        function logout() {
+            currentUser = null;
+            document.getElementById('authArea').innerHTML = `
+                <button onclick="openLoginModal()" class="text-[11px] font-eng font-bold tracking-widest text-[var(--text-black)]/70 hover:text-[var(--pink-point)] transition duration-300">LOG IN</button>
+            `;
+            showToast('로그아웃 되었습니다.');
+        }
+
+        function addToCart(itemId, name, price) {
+            const existing = cart.find(item => item.itemId === itemId);
+            if (existing) {
+                showToast(`이미 장바구니에 담긴 악보입니다: ${name}`);
+            } else {
+                cart.push({ itemId, name, price });
+                showToast(`장바구니에 담겼습니다: ${name}`);
+                updateCartUI();
+            }
+        }
+
+        function removeFromCart(itemId) {
+            cart = cart.filter(item => item.itemId !== itemId);
+            updateCartUI();
+            showToast('장바구니에서 삭제되었습니다.');
+        }
+
+        function toggleCartDrawer() {
+            const drawer = document.getElementById('cartDrawer');
+            drawer.classList.toggle('hidden');
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const badge = document.getElementById('cartBadge');
+            if (cart.length > 0) {
+                badge.innerText = cart.length;
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+
+            const listContainer = document.getElementById('cartItemsList');
+            let total = 0;
+
+            if (cart.length === 0) {
+                listContainer.innerHTML = `<p class="text-xs text-[var(--text-black)]/50 text-center py-8">장바구니가 비어 있습니다.</p>`;
+            } else {
+                let html = '';
+                cart.forEach(item => {
+                    total += item.price;
+                    html += `
+                        <div class="flex justify-between items-center bg-[var(--bg-main)] p-4 border border-[var(--text-black)]/10">
+                            <div>
+                                <h4 class="text-xs font-bold text-[var(--text-black)]">${item.name}</h4>
+                                <span class="text-xs font-eng text-[var(--pink-point)]">${item.price.toLocaleString()} KRW</span>
+                            </div>
+                            <button onclick="removeFromCart('${item.itemId}')" class="text-xs text-stone-500 hover:text-red-500">삭제</button>
+                        </div>
+                    `;
+                });
+                listContainer.innerHTML = html;
+            }
+            document.getElementById('cartTotalPrice').innerText = total.toLocaleString() + ' KRW';
+        }
+
+        function checkoutCart() {
+            if (!currentUser) {
+                showToast('로그인이 필요합니다. 상단의 LOG IN을 이용해 주세요.');
+                toggleCartDrawer();
+                openLoginModal();
+                return;
+            }
+            if (cart.length === 0) {
+                showToast('장바구니가 비어 있습니다.');
+                return;
+            }
+
+            const total = cart.reduce((sum, item) => sum + item.price, window.cartTotal = 0);
+            currentItem = { isCartCheckout: true, name: `장바구니 악보 외 ${cart.length}건`, price: cart.reduce((a,b)=>a+b.price, 0) };
+            
+            document.getElementById('paymentItemName').innerText = currentItem.name;
+            document.getElementById('paymentItemPrice').innerText = currentItem.price.toLocaleString() + ' KRW';
+            
+            toggleCartDrawer();
+            document.getElementById('paymentModal').classList.remove('hidden');
+        }
+
+        function handleSheetAction(name, price, itemId) {
+            if (!currentUser) {
+                showToast('로그인이 필요합니다. 상단의 LOG IN을 이용해 주세요.');
+                openLoginModal();
+                return;
+            }
+
+            if (purchasedItems[itemId]) {
+                downloadPDF(name);
+                return;
+            }
+
+            currentItem = { isCartCheckout: false, name, price, itemId };
+            document.getElementById('paymentItemName').innerText = name;
+            document.getElementById('paymentItemPrice').innerText = price.toLocaleString() + ' KRW';
+            document.getElementById('paymentModal').classList.remove('hidden');
+        }
+
+        function closePaymentModal() {
+            document.getElementById('paymentModal').classList.add('hidden');
+            currentItem = null;
+        }
+
+        function executePayment() {
+            if (!currentItem) return;
+
+            if (currentItem.isCartCheckout) {
+                cart.forEach(item => {
+                    purchasedItems[item.itemId] = true;
+                    // Update individual buttons if present
+                    const actionContainer = item.itemId === 'sheet1' ? document.getElementById('item1-action') : document.getElementById('item2-action');
+                    if (actionContainer) {
+                        actionContainer.innerHTML = `
+                            <button onclick="handleSheetAction('${item.name}', ${item.price}, '${item.itemId}')" class="w-full py-2.5 bg-[var(--pink-point)] text-white text-[11px] font-eng font-bold tracking-wider hover:opacity-90 transition-opacity">DOWNLOAD PDF</button>
+                        `;
+                    }
+                });
+                const downloadedNames = cart.map(i => i.name).join(', ');
+                cart = [];
+                updateCartUI();
+                closePaymentModal();
+                showToast(`결제가 완료되었습니다! 모든 악보의 다운로드를 시작합니다.`);
+                downloadPDF(downloadedNames);
+            } else {
+                const itemId = currentItem.itemId;
+                purchasedItems[itemId] = true;
+
+                const actionContainer = itemId === 'sheet1' ? document.getElementById('item1-action') : document.getElementById('item2-action');
+                actionContainer.innerHTML = `
+                    <button onclick="handleSheetAction('${currentItem.name}', ${currentItem.price}, '${itemId}')" class="w-full py-2.5 bg-[var(--pink-point)] text-white text-[11px] font-eng font-bold tracking-wider hover:opacity-90 transition-opacity">DOWNLOAD PDF</button>
+                `;
+
+                closePaymentModal();
+                showToast(`결제가 완료되었습니다! 바로 다운로드 하실 수 있습니다.`);
+                downloadPDF(currentItem.name);
+            }
+        }
+
+        function downloadPDF(sheetName) {
+            showToast(`"${sheetName}" 고해상도 PDF 다운로드를 시작합니다.`);
+            const blob = new Blob([`[KANNA PIANO CLASS] Official Sheet Music: ${sheetName}\nLicensed to: ${currentUser}\nThank you for your purchase!`], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `KannaPiano_SheetMusic.txt`;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toastMessage');
+            toast.innerText = message;
+            toast.classList.remove('translate-y-32', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-32', 'opacity-0');
+            }, 3000);
         }
     </script>
 </body>
