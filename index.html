@@ -34,21 +34,29 @@
         .magazine-border {
             border-bottom: 1px solid rgba(17, 17, 17, 0.15);
         }
+
+        /* Tab content visibility control */
+        .tab-section {
+            display: none;
+        }
+        .tab-section.active {
+            display: block;
+        }
     </style>
 </head>
 <body class="bg-[var(--bg-main)] text-[var(--text-black)] selection:bg-[var(--pink-point)] selection:text-white flex flex-col min-h-screen">
 
     <header class="fixed top-0 w-full z-40 bg-[var(--bg-main)]/90 backdrop-blur-md border-b border-[var(--text-black)]/10">
         <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="cursor-pointer flex items-center" onclick="window.scrollTo(0,0)">
+            <div class="cursor-pointer flex items-center" onclick="showSection('home')">
                 <span class="font-eng font-black text-xl tracking-widest text-[var(--text-black)]">KANNA<span class="text-[var(--pink-point)]">.</span></span>
             </div>
             
             <nav class="hidden md:flex items-center space-x-12 text-[11px] font-eng font-bold tracking-[0.2em] uppercase text-[var(--text-black)]/60">
-                <a href="#profile" class="hover:text-[var(--pink-point)] transition duration-300">Profile</a>
-                <a href="#performance" class="hover:text-[var(--pink-point)] transition duration-300">Performance</a>
-                <a href="#classes" class="hover:text-[var(--pink-point)] transition duration-300">Class</a>
-                <a href="#sheet-music" class="hover:text-[var(--pink-point)] transition duration-300">Shop</a>
+                <button onclick="showSection('profile')" class="nav-btn hover:text-[var(--pink-point)] transition duration-300">Profile</button>
+                <button onclick="showSection('performance')" class="nav-btn hover:text-[var(--pink-point)] transition duration-300">Performance</button>
+                <button onclick="showSection('classes')" class="nav-btn hover:text-[var(--pink-point)] transition duration-300">Class</button>
+                <button onclick="showSection('sheet-music')" class="nav-btn hover:text-[var(--pink-point)] transition duration-300">Shop</button>
             </nav>
             
             <div class="flex items-center">
@@ -71,7 +79,7 @@
             </p>
         </section>
 
-        <section id="profile" class="max-w-6xl mx-auto px-6 py-24 magazine-border">
+        <section id="profile" class="tab-section max-w-6xl mx-auto px-6 py-24 magazine-border">
             <h2 class="font-eng font-bold text-3xl tracking-widest text-[var(--text-black)] pb-6 mb-16 border-b border-[var(--text-black)]">PROFILE.</h2>
             
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
@@ -140,16 +148,21 @@
             </div>
         </section>
 
-        <section id="performance" class="max-w-6xl mx-auto px-6 py-24 magazine-border">
+        <section id="performance" class="tab-section max-w-6xl mx-auto px-6 py-24 magazine-border">
             <h2 class="font-eng font-bold text-3xl tracking-widest text-[var(--text-black)] pb-6 mb-12 border-b border-[var(--text-black)]">PERFORMANCE.</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Video 1 -->
                 <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-6 flex flex-col justify-between group shadow-sm">
                     <div>
-                        <div class="aspect-video bg-[var(--bg-main)] mb-6 relative overflow-hidden flex items-center justify-center">
-                            <iframe class="w-full h-full absolute inset-0" src="https://www.youtube.com/embed/dmy2gg9Zp6I" title="나로부터 시작되리 - 하기오스" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
+                        <a href="https://youtu.be/dmy2gg9Zp6I" target="_blank" class="block aspect-video bg-[var(--bg-main)] mb-6 relative overflow-hidden flex items-center justify-center group/thumb">
+                            <img src="https://img.youtube.com/vi/dmy2gg9Zp6I/hqdefault.jpg" alt="나로부터 시작되리" class="w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x338/FAF3F5/111?text=YouTube+Video'">
+                            <div class="absolute inset-0 bg-black/20 group-hover/thumb:bg-black/40 transition-colors flex items-center justify-center">
+                                <div class="w-16 h-12 bg-red-600 rounded-xl flex items-center justify-center text-white shadow-lg group-hover/thumb:scale-110 transition-transform">
+                                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                            </div>
+                        </a>
                         <h3 class="font-bold text-lg text-[var(--text-black)] mb-2">나로부터 시작되리 - 하기오스</h3>
                         <p class="text-xs text-[var(--text-black)]/60 mb-6 font-light">칸나쌤 연주, 편곡</p>
                     </div>
@@ -161,9 +174,14 @@
                 <!-- Video 2 -->
                 <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-6 flex flex-col justify-between group shadow-sm">
                     <div>
-                        <div class="aspect-video bg-[var(--bg-main)] mb-6 relative overflow-hidden flex items-center justify-center">
-                            <iframe class="w-full h-full absolute inset-0" src="https://www.youtube.com/embed/qoDW8XJOT5w" title="전능하신 나의 주 하나님은" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
+                        <a href="https://youtu.be/qoDW8XJOT5w" target="_blank" class="block aspect-video bg-[var(--bg-main)] mb-6 relative overflow-hidden flex items-center justify-center group/thumb">
+                            <img src="https://img.youtube.com/vi/qoDW8XJOT5w/hqdefault.jpg" alt="전능하신 나의 주 하나님은" class="w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x338/FAF3F5/111?text=YouTube+Video'">
+                            <div class="absolute inset-0 bg-black/20 group-hover/thumb:bg-black/40 transition-colors flex items-center justify-center">
+                                <div class="w-16 h-12 bg-red-600 rounded-xl flex items-center justify-center text-white shadow-lg group-hover/thumb:scale-110 transition-transform">
+                                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                            </div>
+                        </a>
                         <h3 class="font-bold text-lg text-[var(--text-black)] mb-2">전능하신 나의 주 하나님은</h3>
                         <p class="text-xs text-[var(--text-black)]/60 mb-6 font-light">칸나쌤 연주, 리하모니</p>
                     </div>
@@ -174,7 +192,7 @@
             </div>
         </section>
 
-        <section id="classes" class="max-w-6xl mx-auto px-6 py-24 magazine-border">
+        <section id="classes" class="tab-section max-w-6xl mx-auto px-6 py-24 magazine-border">
             <h2 class="font-eng font-bold text-3xl tracking-widest text-[var(--text-black)] pb-6 mb-8 border-b border-[var(--text-black)]">CLASS.</h2>
             
             <ul class="flex flex-col border-t border-[var(--text-black)]/10">
@@ -232,7 +250,7 @@
             </ul>
         </section>
 
-        <section id="sheet-music" class="max-w-6xl mx-auto px-6 py-24 magazine-border">
+        <section id="sheet-music" class="tab-section max-w-6xl mx-auto px-6 py-24 magazine-border">
             <h2 class="font-eng font-bold text-3xl tracking-widest text-[var(--text-black)] pb-6 mb-12 border-b border-[var(--text-black)]">SHOP & SHEET.</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -300,5 +318,24 @@
         </section>
     </main>
 
+    <script>
+        function showSection(sectionId) {
+            // Hide all tab sections
+            const sections = document.querySelectorAll('.tab-section');
+            sections.forEach(sec => sec.classList.remove('active'));
+
+            if (sectionId === 'home') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return;
+            }
+
+            // Show selected section
+            const target = document.getElementById(sectionId);
+            if (target) {
+                target.classList.add('active');
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
 </body>
 </html>
