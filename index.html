@@ -55,7 +55,7 @@
             <nav class="hidden md:flex items-center space-x-12 text-[11px] font-eng font-bold tracking-[0.2em] uppercase text-[var(--text-black)]/60">
                 <button onclick="showSection('profile')" class="nav-btn hover:text-[var(--pink-point)] transition duration-300">Profile</button>
                 <button onclick="showSection('performance')" class="nav-btn hover:text-[var(--pink-point)] transition duration-300">Performance</button>
-                <button onclick="showSection('lesson')" class="nav-btn hover:text-[var(--pink-point)] transition duration-300">Lesson</button>
+                <button onclick="showSection('classes')" class="nav-btn hover:text-[var(--pink-point)] transition duration-300">Lesson</button>
                 <button onclick="showSection('sheet-music')" class="nav-btn hover:text-[var(--pink-point)] transition duration-300">Shop</button>
             </nav>
             
@@ -83,6 +83,7 @@
             <div class="mt-12 w-12 h-[1px] bg-[var(--text-black)]"></div>
         </section>
 
+        <!-- Profile Section -->
         <section id="profile" class="tab-section max-w-6xl mx-auto px-6 py-24 magazine-border">
             <h2 class="font-eng font-bold text-3xl tracking-widest text-[var(--text-black)] pb-6 mb-16 border-b border-[var(--text-black)]">PROFILE.</h2>
             
@@ -148,6 +149,7 @@
             </div>
         </section>
 
+        <!-- Performance Section -->
         <section id="performance" class="tab-section max-w-6xl mx-auto px-6 py-24 magazine-border">
             <h2 class="font-eng font-bold text-3xl tracking-widest text-[var(--text-black)] pb-6 mb-12 border-b border-[var(--text-black)]">PERFORMANCE.</h2>
             
@@ -258,7 +260,8 @@
             </div>
         </section>
 
-        <section id="lesson" class="tab-section max-w-6xl mx-auto px-6 py-24 magazine-border">
+        <!-- Lesson Section -->
+        <section id="classes" class="tab-section max-w-6xl mx-auto px-6 py-24 magazine-border">
             <h2 class="font-eng font-bold text-3xl tracking-widest text-[var(--text-black)] pb-6 mb-4 border-b border-[var(--text-black)]">LESSON.</h2>
             <p class="text-xs font-light text-[var(--text-black)]/60 tracking-wider mb-8">개개인의 성향과 레벨에 맞춰 1:1 맞춤 커리큘럼을 제공합니다.</p>
             
@@ -314,10 +317,10 @@
             </div>
 
             <!-- Comprehensive Lesson Inquiry Form -->
-            <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-8 md:p-12 shadow-sm">
+            <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-8 md:p-12 shadow-sm mb-16">
                 <div class="mb-10 border-b border-[var(--text-black)]/10 pb-6">
                     <span class="font-eng font-bold text-xs tracking-[0.3em] text-[var(--pink-point)] uppercase block mb-2">APPLICATION FORM</span>
-                    <h3 class="text-2xl md:text-3xl font-bold text-[var(--text-black)]">레슨 신청서</h3>
+                    <h3 class="text-2xl md:text-3xl font-bold text-[var(--text-black)]">레슨 문의하기</h3>
                     <p class="text-xs text-[var(--text-black)]/60 mt-2 font-light">작성 후 아래 버튼을 누르시면 내용이 자동으로 복사되며 카카오톡 채널로 이동합니다.</p>
                 </div>
 
@@ -376,13 +379,42 @@
                     </button>
                 </div>
             </div>
+
+            <!-- Lesson Student Reviews (Placeholder Examples) -->
+            <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-8 md:p-12 shadow-sm">
+                <div class="flex justify-between items-center mb-8 pb-6 border-b border-[var(--text-black)]/10">
+                    <div>
+                        <span class="font-eng font-bold text-xs tracking-[0.3em] text-[var(--pink-point)] uppercase block mb-1">STUDENT REVIEWS</span>
+                        <h3 class="text-2xl font-bold text-[var(--text-black)]">수강생 후기</h3>
+                    </div>
+                    <span class="text-xs text-[var(--text-black)]/50 font-light">실제 수강생분들의 생생한 후기입니다.</span>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="p-6 bg-[var(--bg-main)] border border-[var(--text-black)]/10">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-bold text-sm">김** 수강생 (취미 클래스)</span>
+                            <span class="text-xs text-amber-500 font-eng">★★★★★</span>
+                        </div>
+                        <p class="text-xs font-light text-[var(--text-black)]/80 leading-relaxed">"코드 이론부터 차근차근 배우면서 좋아하는 뉴에이지 곡을 직접 칠 수 있게 되었어요! 설명도 너무 친절하시고 레슨 시간이 항상 기다려집니다."</p>
+                    </div>
+                    <div class="p-6 bg-[var(--bg-main)] border border-[var(--text-black)]/10">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-bold text-sm">박** 수강생 (CCM 클래스)</span>
+                            <span class="text-xs text-amber-500 font-eng">★★★★★</span>
+                        </div>
+                        <p class="text-xs font-light text-[var(--text-black)]/80 leading-relaxed">"교회 찬양팀에서 메인건반을 맡고 있는데 리하모니제이션과 노드 건반 활용법을 배운 뒤로 반주 퀄리티가 완전히 달라졌어요. 강력 추천합니다!"</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
+        <!-- Shop Section -->
         <section id="sheet-music" class="tab-section max-w-6xl mx-auto px-6 py-24 magazine-border">
             <h2 class="font-eng font-bold text-3xl tracking-widest text-[var(--text-black)] pb-6 mb-4 border-b border-[var(--text-black)]">SHOP & SHEET.</h2>
             <p class="text-xs font-light text-[var(--text-black)]/60 tracking-wider mb-12">구매하신 악보는 1개월 내 다운로드 가능하며, 다운로드 완료 시 영구 소장하실 수 있습니다. (무단 공유 및 유출 엄금)</p>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
                 <!-- Sheet Item 1 -->
                 <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-6 flex flex-col justify-between group shadow-sm">
                     <div>
@@ -444,8 +476,44 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Customer Reviews for Shop (Verified Buyers Only) -->
+            <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-8 md:p-12 shadow-sm">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 pb-6 border-b border-[var(--text-black)]/10 gap-4">
+                    <div>
+                        <span class="font-eng font-bold text-xs tracking-[0.3em] text-[var(--pink-point)] uppercase block mb-1">PURCHASE REVIEWS</span>
+                        <h3 class="text-2xl font-bold text-[var(--text-black)]">악보 구매 후기</h3>
+                        <p class="text-xs text-[var(--text-black)]/50 mt-1 font-light">악보를 실제로 구매하신 회원분들만 후기를 작성하실 수 있습니다.</p>
+                    </div>
+                    <button onclick="openReviewModal()" class="px-5 py-2.5 bg-[var(--text-black)] text-white text-xs font-eng font-bold tracking-wider hover:bg-[var(--pink-point)] transition-colors">후기 작성하기</button>
+                </div>
+
+                <div id="shopReviewsList" class="space-y-6">
+                    <div class="p-6 bg-[var(--bg-main)] border border-[var(--text-black)]/10">
+                        <div class="flex justify-between items-center mb-2">
+                            <div>
+                                <span class="font-bold text-sm mr-3">이** 회원</span>
+                                <span class="text-[11px] bg-pink-100 text-[var(--pink-point)] px-2 py-0.5 font-eng font-bold">구매상품: 아 하나님의 은혜로 (Piano Solo)</span>
+                            </div>
+                            <span class="text-xs text-amber-500 font-eng">★★★★★</span>
+                        </div>
+                        <p class="text-xs font-light text-[var(--text-black)]/80 leading-relaxed">"보이싱이 정말 은혜롭고 아름답습니다. 연주할 때마다 감동이 배가 되네요. PDF 다운로드도 간편하고 소장할 수 있어서 좋습니다!"</p>
+                    </div>
+                    <div class="p-6 bg-[var(--bg-main)] border border-[var(--text-black)]/10">
+                        <div class="flex justify-between items-center mb-2">
+                            <div>
+                                <span class="font-bold text-sm mr-3">최** 회원</span>
+                                <span class="text-[11px] bg-pink-100 text-[var(--pink-point)] px-2 py-0.5 font-eng font-bold">구매상품: 주 품에 (Jazz Ver.)</span>
+                            </div>
+                            <span class="text-xs text-amber-500 font-eng">★★★★★</span>
+                        </div>
+                        <p class="text-xs font-light text-[var(--text-black)]/80 leading-relaxed">"재즈 세련미가 넘치는 편곡입니다. 주일 예배 직후에 연주했는데 반응이 너무 좋았어요. 추천합니다!"</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
+        <!-- Inquiry & Footer Section -->
         <section id="inquiry" class="max-w-6xl mx-auto px-6 py-24 text-center">
             <h2 class="font-eng font-bold text-xs tracking-[0.3em] text-[var(--pink-point)] mb-4 uppercase">GET IN TOUCH</h2>
             <h3 class="text-3xl md:text-4xl font-bold text-[var(--text-black)] mb-8">레슨 및 작업 문의</h3>
@@ -493,7 +561,7 @@
     <div id="paymentModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center px-4">
         <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-8 max-w-md w-full shadow-2xl relative">
             <h3 class="font-eng font-bold text-xl mb-2">SECURE CHECKOUT</h3>
-            <p id="paymentItemDesc" class="text-xs text-[var(--text-black)]/60 mb-6 font-light">결제 후 1개월 내 다운로드 가능 (다운로드 완료 시 영구 소장 가능합니다.)</p>
+            <p id="paymentItemDesc" class="text-xs text-[var(--text-black)]/60 mb-6 font-light">결제 후 1개월 내 다운로드 가능하며, 다운로드 완료 시 영구 소장하실 수 있습니다.</p>
             
             <div class="bg-[var(--bg-main)] p-4 border border-[var(--text-black)]/10 mb-6 flex justify-between items-center">
                 <span id="paymentItemName" class="text-sm font-bold">상품명</span>
@@ -517,6 +585,39 @@
         </div>
     </div>
 
+    <!-- Review Modal -->
+    <div id="reviewModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center px-4">
+        <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-8 max-w-md w-full shadow-2xl relative">
+            <h3 class="font-eng font-bold text-xl mb-2">WRITE REVIEW</h3>
+            <p class="text-xs text-[var(--text-black)]/60 mb-6 font-light">구매하신 악보에 대한 소중한 후기를 남겨주세요. (이름은 비공개 처리됩니다)</p>
+            
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-[var(--text-black)] mb-2 uppercase font-eng">Select Purchased Sheet</label>
+                    <select id="reviewItemSelect" class="w-full px-4 py-3 bg-[var(--bg-main)] border border-[var(--text-black)]/20 text-sm focus:outline-none focus:border-[var(--pink-point)]">
+                        <!-- Populated dynamically based on purchased items -->
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-[var(--text-black)] mb-2 uppercase font-eng">Rating</label>
+                    <select id="reviewRating" class="w-full px-4 py-3 bg-[var(--bg-main)] border border-[var(--text-black)]/20 text-sm focus:outline-none focus:border-[var(--pink-point)]">
+                        <option value="★★★★★">★★★★★ (5/5 - 완벽합니다)</option>
+                        <option value="★★★★☆">★★★★☆ (4/5 - 좋아요)</option>
+                        <option value="★★★☆☆">★★★☆☆ (3/5 - 보통이에요)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-[var(--text-black)] mb-2 uppercase font-eng">Review Content</label>
+                    <textarea id="reviewText" rows="4" placeholder="악보 연주 소감이나 만족도를 적어주세요." class="w-full px-4 py-3 bg-[var(--bg-main)] border border-[var(--text-black)]/20 text-sm focus:outline-none focus:border-[var(--pink-point)]"></textarea>
+                </div>
+                <div class="flex space-x-4 pt-4">
+                    <button onclick="closeReviewModal()" class="w-1/2 py-3 bg-stone-200 text-stone-800 text-xs font-eng font-bold tracking-widest hover:bg-stone-300 transition-colors">CANCEL</button>
+                    <button onclick="submitReview()" class="w-1/2 py-3 bg-[var(--text-black)] text-white text-xs font-eng font-bold tracking-widest hover:bg-[var(--pink-point)] transition-colors">SUBMIT</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Cart Drawer Modal -->
     <div id="cartDrawer" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex justify-end">
         <div class="bg-[var(--white-bg)] w-full max-w-md h-full shadow-2xl flex flex-col justify-between p-6 transform transition-transform duration-300">
@@ -528,7 +629,6 @@
                     </button>
                 </div>
                 <div id="cartItemsList" class="py-6 space-y-4 max-h-[60vh] overflow-y-auto">
-                    <!-- Cart items rendered dynamically -->
                     <p class="text-xs text-[var(--text-black)]/50 text-center py-8">장바구니가 비어 있습니다.</p>
                 </div>
             </div>
@@ -543,6 +643,7 @@
         </div>
     </div>
 
+    <!-- Toast Notification Message Box -->
     <div id="toastMessage" class="fixed bottom-8 right-8 z-50 bg-[var(--text-black)] text-white px-6 py-4 text-xs font-light tracking-wide shadow-2xl transform translate-y-32 opacity-0 transition-all duration-300">
         알림 메시지입니다.
     </div>
@@ -551,7 +652,7 @@
         let currentUser = null;
         let currentItem = null;
         let cart = [];
-        let purchasedItems = {}; // track purchased items per session
+        let purchasedItems = {}; // track purchased items per session (e.g., {'sheet1': '아 하나님의 은혜로 (Piano Solo)'})
 
         function showSection(sectionId) {
             const sections = document.querySelectorAll('.tab-section');
@@ -706,7 +807,7 @@
 
             if (currentItem.isCartCheckout) {
                 cart.forEach(item => {
-                    purchasedItems[item.itemId] = true;
+                    purchasedItems[item.itemId] = item.name;
                     const actionContainer = item.itemId === 'sheet1' ? document.getElementById('item1-action') : document.getElementById('item2-action');
                     if (actionContainer) {
                         actionContainer.innerHTML = `
@@ -718,11 +819,11 @@
                 cart = [];
                 updateCartUI();
                 closePaymentModal();
-                showToast(`결제가 완료되었습니다! 1개월 내 다운로드 가능하며, 다운로드 완료 시 영구 소장하실 수 있습니다.`);
+                showToast(`결제가 완료되었습니다! 1개월 내 다운로드 가능합니다.`);
                 downloadPDF(downloadedNames);
             } else {
                 const itemId = currentItem.itemId;
-                purchasedItems[itemId] = true;
+                purchasedItems[itemId] = currentItem.name;
 
                 const actionContainer = itemId === 'sheet1' ? document.getElementById('item1-action') : document.getElementById('item2-action');
                 actionContainer.innerHTML = `
@@ -730,7 +831,7 @@
                 `;
 
                 closePaymentModal();
-                showToast(`결제가 완료되었습니다! 1개월 내 다운로드 가능하며, 다운로드 완료 시 영구 소장하실 수 있습니다.`);
+                showToast(`결제가 완료되었습니다! 1개월 내 다운로드 가능합니다.`);
                 downloadPDF(currentItem.name);
             }
         }
@@ -746,6 +847,67 @@
             a.click();
             window.URL.revokeObjectURL(url);
             document.body.removeChild(a);
+        }
+
+        function openReviewModal() {
+            if (!currentUser) {
+                showToast('로그인이 필요합니다.');
+                openLoginModal();
+                return;
+            }
+
+            const purchasedKeys = Object.keys(purchasedItems);
+            if (purchasedKeys.length === 0) {
+                showToast('악보를 구매하신 회원만 후기를 작성할 수 있습니다.');
+                return;
+            }
+
+            const selectElem = document.getElementById('reviewItemSelect');
+            selectElem.innerHTML = '';
+            purchasedKeys.forEach(key => {
+                const opt = document.createElement('option');
+                opt.value = purchasedItems[key];
+                opt.innerText = purchasedItems[key];
+                selectElem.appendChild(opt);
+            });
+
+            document.getElementById('reviewModal').classList.remove('hidden');
+        }
+
+        function closeReviewModal() {
+            document.getElementById('reviewModal').classList.add('hidden');
+        }
+
+        function submitReview() {
+            const sheetName = document.getElementById('reviewItemSelect').value;
+            const rating = document.getElementById('reviewRating').value;
+            const text = document.getElementById('reviewText').value.trim();
+
+            if (!text) {
+                showToast('후기 내용을 입력해 주세요.');
+                return;
+            }
+
+            const maskedName = currentUser.substring(0, 1) + '**';
+            const reviewsList = document.getElementById('shopReviewsList');
+            
+            const newReviewHTML = `
+                <div class="p-6 bg-[var(--bg-main)] border border-[var(--text-black)]/10">
+                    <div class="flex justify-between items-center mb-2">
+                        <div>
+                            <span class="font-bold text-sm mr-3">${maskedName} 회원</span>
+                            <span class="text-[11px] bg-pink-100 text-[var(--pink-point)] px-2 py-0.5 font-eng font-bold">구매상품: ${sheetName}</span>
+                        </div>
+                        <span class="text-xs text-amber-500 font-eng">${rating}</span>
+                    </div>
+                    <p class="text-xs font-light text-[var(--text-black)]/80 leading-relaxed">"${text}"</p>
+                </div>
+            `;
+
+            reviewsList.insertAdjacentHTML('afterbegin', newReviewHTML);
+            closeReviewModal();
+            document.getElementById('reviewText').value = '';
+            showToast('소중한 후기가 등록되었습니다!');
         }
 
         function submitLessonInquiry() {
