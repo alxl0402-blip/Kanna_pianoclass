@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,117 +34,64 @@
         .magazine-border {
             border-bottom: 1px solid rgba(17, 17, 17, 0.15);
         }
-
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-        /* 모달 애니메이션 */
-        .modal-fade-in { animation: fadeIn 0.3s ease-out forwards; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        
-        /* 토스트 알림 */
-        #toast {
-            visibility: hidden; min-width: 250px; background-color: #333; color: #fff; text-align: center; border-radius: 4px;
-            padding: 16px; position: fixed; z-index: 9999; left: 50%; bottom: 30px; transform: translateX(-50%); font-size: 14px;
-        }
-        #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
-        @keyframes fadein { from { bottom: 0; opacity: 0; } to { bottom: 30px; opacity: 1; } }
-        @keyframes fadeout { from { bottom: 30px; opacity: 1; } to { bottom: 0; opacity: 0; } }
     </style>
 </head>
 <body class="bg-[var(--bg-main)] text-[var(--text-black)] selection:bg-[var(--pink-point)] selection:text-white flex flex-col min-h-screen">
 
-    <header class="fixed top-0 w-full z-50 bg-[var(--bg-main)]/95 backdrop-blur-md border-b border-[var(--text-black)]/10">
+    <header class="fixed top-0 w-full z-40 bg-[var(--bg-main)]/90 backdrop-blur-md border-b border-[var(--text-black)]/10">
         <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="cursor-pointer flex items-center" onclick="showSection('home')">
+            <div class="cursor-pointer flex items-center" onclick="window.scrollTo(0,0)">
                 <span class="font-eng font-black text-xl tracking-widest text-[var(--text-black)]">KANNA<span class="text-[var(--pink-point)]">.</span></span>
             </div>
             
-            <!-- Desktop Navigation -->
-            <nav class="hidden md:flex items-center space-x-10 text-[11px] font-eng font-bold tracking-[0.2em] uppercase text-[var(--text-black)]/60">
-                <button onclick="showSection('profile')" class="nav-btn hover:text-[var(--pink-point)] transition duration-300">Profile</button>
-                <button onclick="showSection('performance')" class="nav-btn hover:text-[var(--pink-point)] transition duration-300">Performance</button>
-                <button onclick="showSection('classes')" class="nav-btn hover:text-[var(--pink-point)] transition duration-300">Lesson</button>
-                <button onclick="showSection('sheet-music')" class="nav-btn hover:text-[var(--pink-point)] transition duration-300">Sheet</button>
+            <nav class="hidden md:flex items-center space-x-12 text-[11px] font-eng font-bold tracking-[0.2em] uppercase text-[var(--text-black)]/60">
+                <a href="#profile" class="hover:text-[var(--pink-point)] transition duration-300">Profile</a>
+                <a href="#performance" class="hover:text-[var(--pink-point)] transition duration-300">Performance</a>
+                <a href="#classes" class="hover:text-[var(--pink-point)] transition duration-300">Class</a>
+                <a href="#sheet-music" class="hover:text-[var(--pink-point)] transition duration-300">Shop</a>
             </nav>
             
-            <!-- Right Actions -->
-            <div class="flex items-center space-x-5">
-                <!-- Desktop Auth & Contact (Hidden on mobile) -->
-                <div class="hidden md:flex items-center space-x-5">
-                    <button class="text-[11px] font-eng font-bold tracking-widest text-[var(--text-black)]/70 hover:text-[var(--pink-point)] transition duration-300">LOG IN</button>
-                    <button onclick="openContactModal()" class="text-[11px] font-eng font-bold tracking-widest text-[var(--text-black)] hover:text-[var(--pink-point)] transition duration-300">CONTACT</button>
-                </div>
-                
-                <!-- Cart Button (Visible on both) -->
-                <button class="relative text-[var(--text-black)] hover:text-[var(--pink-point)] transition duration-300 flex items-center" aria-label="Cart">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-                    <span class="absolute -top-2 -right-2 bg-[var(--pink-point)] text-white text-[9px] font-eng font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
-                </button>
-                
-                <!-- Mobile Hamburger Toggle -->
-                <button onclick="toggleMobileMenu()" class="md:hidden text-[var(--text-black)] hover:text-[var(--pink-point)] transition-colors" aria-label="Menu">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-                </button>
-            </div>
-        </div>
-
-        <!-- Mobile Navigation Drawer -->
-        <div id="mobileMenu" class="hidden absolute top-20 left-0 w-full bg-[var(--bg-main)] border-b border-[var(--text-black)]/10 px-6 py-6 space-y-4 shadow-xl z-40">
-            <button onclick="showSection('profile'); toggleMobileMenu();" class="block w-full text-left font-eng font-bold text-xs tracking-[0.2em] uppercase text-[var(--text-black)] hover:text-[var(--pink-point)] py-2">Profile</button>
-            <button onclick="showSection('performance'); toggleMobileMenu();" class="block w-full text-left font-eng font-bold text-xs tracking-[0.2em] uppercase text-[var(--text-black)] hover:text-[var(--pink-point)] py-2">Performance</button>
-            <button onclick="showSection('classes'); toggleMobileMenu();" class="block w-full text-left font-eng font-bold text-xs tracking-[0.2em] uppercase text-[var(--text-black)] hover:text-[var(--pink-point)] py-2">Lesson</button>
-            <button onclick="showSection('sheet-music'); toggleMobileMenu();" class="block w-full text-left font-eng font-bold text-xs tracking-[0.2em] uppercase text-[var(--text-black)] hover:text-[var(--pink-point)] py-2">Sheet</button>
-            <div class="pt-4 mt-2 border-t border-[var(--text-black)]/10">
-                <button onclick="toggleMobileMenu();" class="block w-full text-left text-xs font-eng font-bold tracking-widest text-[var(--text-black)]/70 py-2">LOG IN</button>
-                <button onclick="openContactModal(); toggleMobileMenu();" class="block w-full text-left text-xs font-eng font-bold tracking-widest text-[var(--pink-point)] py-2">CONTACT</button>
+            <div class="flex items-center">
+                <a href="http://pf.kakao.com/_MlAaX" target="_blank" class="text-[11px] font-eng font-bold tracking-widest text-[var(--text-black)] hover:text-[var(--pink-point)] transition duration-300">CONTACT</a>
             </div>
         </div>
     </header>
 
-    <main class="w-full flex-grow pt-20">
-        
-        <!-- HOME SECTION -->
-        <div id="home" class="tab-section block">
-            <section class="max-w-6xl mx-auto px-6 py-12 md:py-24 flex flex-col md:flex-row items-center md:items-start gap-12 magazine-border">
-                <div class="w-full md:w-1/2 flex flex-col justify-center md:mt-12">
-                    <h2 class="font-eng text-[var(--pink-point)] tracking-[0.3em] text-[10px] md:text-xs font-bold mb-4 md:mb-6 uppercase">Pianist & Producer</h2>
-                    <h1 class="text-6xl md:text-[6rem] font-eng font-black tracking-tighter text-[var(--text-black)] leading-[0.95]">
-                        <span class="font-light block text-4xl md:text-5xl mb-2 md:mb-4 font-sans tracking-tight opacity-80">피아니스트</span>
-                        KANNA.
-                    </h1>
-                    <!-- 오글거리는 텍스트 삭제 완료 -->
-                    <div class="mt-12 flex flex-col sm:flex-row gap-4">
-                        <button onclick="showSection('classes')" class="px-8 py-4 bg-[var(--text-black)] text-white font-eng font-bold text-xs tracking-widest hover:bg-[var(--pink-point)] transition-all shadow-sm">LESSON INFO</button>
-                        <button onclick="showSection('sheet-music')" class="px-8 py-4 bg-[var(--white-bg)] border border-[var(--text-black)]/20 text-[var(--text-black)] font-eng font-bold text-xs tracking-widest hover:border-[var(--pink-point)] hover:text-[var(--pink-point)] transition-all shadow-sm">SHEET SHOP</button>
-                    </div>
-                </div>
-                <div class="w-full md:w-1/2">
-                    <div class="aspect-[4/5] md:aspect-[3/4] bg-[var(--white-bg)] border border-[var(--text-black)]/10 overflow-hidden relative shadow-md group">
-                        <img src="https://i.postimg.cc/ryxHm1yR/baeghanna-peulopil.jpg" alt="Pianist Kanna" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" onerror="this.src='https://placehold.co/600x800/FAF3F5/111?text=Profile+Photo'">
-                    </div>
-                </div>
-            </section>
-        </div>
+    <main class="w-full flex-grow pt-32">
+        <section class="max-w-6xl mx-auto px-6 pt-20 pb-32">
+            <h2 class="font-eng text-[var(--pink-point)] tracking-[0.3em] text-xs font-bold mb-6 uppercase">Pianist & Producer</h2>
+            <h1 class="text-6xl md:text-[7rem] font-eng font-black tracking-tighter text-[var(--text-black)] leading-[0.9]">
+                <span class="font-light block text-4xl md:text-5xl mb-4 font-sans tracking-tight opacity-80">피아니스트</span>
+                KANNA.
+            </h1>
+            <div class="mt-12 w-12 h-[1px] bg-[var(--text-black)]"></div>
+            <p class="mt-8 text-[var(--text-black)]/70 font-light text-sm md:text-base tracking-wide max-w-xl leading-relaxed">
+                섬세한 터치와 깊이 있는 해석으로 당신만의 음악을 완성합니다.<br class="hidden md:block">
+                기초부터 전문 연주까지, 피아노와 함께하는 아름다운 여정을 시작해보세요.
+            </p>
+        </section>
 
-        <!-- PROFILE SECTION -->
-        <div id="profile" class="tab-section hidden">
-            <section class="max-w-6xl mx-auto px-6 py-24 magazine-border">
-                <h2 class="font-eng font-bold text-3xl tracking-widest text-[var(--text-black)] pb-6 mb-16 border-b border-[var(--text-black)]">PROFILE.</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <!-- Left Column -->
+        <section id="profile" class="max-w-6xl mx-auto px-6 py-24 magazine-border">
+            <h2 class="font-eng font-bold text-3xl tracking-widest text-[var(--text-black)] pb-6 mb-16 border-b border-[var(--text-black)]">PROFILE.</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+                <!-- Profile Photo Column -->
+                <div class="lg:col-span-4">
+                    <div class="aspect-[3/4] bg-[var(--white-bg)] border border-[var(--text-black)]/10 overflow-hidden relative group shadow-sm">
+                        <img src="https://placehold.co/600x800/FAF3F5/111?text=Profile+Photo" alt="Kanna Profile" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.src='https://placehold.co/600x800/FAF3F5/111?text=Profile+Photo'">
+                        <div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors"></div>
+                    </div>
+                </div>
+
+                <!-- Profile Details Columns (Balanced 5:5 Left/Right) -->
+                <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <!-- Left Column: Education, Admissions, Awards -->
                     <div>
                         <h3 class="font-eng font-bold text-[var(--text-black)] tracking-widest text-sm mb-6 border-b border-[var(--text-black)]/10 pb-3">EDUCATION</h3>
                         <ul class="space-y-4 text-sm font-light text-[var(--text-black)]/80 leading-relaxed mb-12">
                             <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> 경희대학교 포스트모던음악학과 학사</li>
                             <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> 베를린 예술대학교 UDK 전공연수 수료</li>
                             <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> 경희대학교 일반대학원 포스트모던음악학과 석사 재학</li>
-                        </ul>
-
-                        <h3 class="font-eng font-bold text-[var(--text-black)] tracking-widest text-sm mb-6 border-b border-[var(--text-black)]/10 pb-3">AWARDS</h3>
-                        <ul class="space-y-4 text-sm font-light text-[var(--text-black)]/80 leading-relaxed mb-12">
-                            <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> 아중호반 예술제 최우수상 수상</li>
-                            <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> 2022 대학가요제 동상 수상 '이거 좋은데요' (STN Remember '대학가요제')</li>
                         </ul>
 
                         <h3 class="font-eng font-bold text-[var(--text-black)] tracking-widest text-sm mb-6 border-b border-[var(--text-black)]/10 pb-3">ADMISSIONS</h3>
@@ -157,466 +104,201 @@
                             <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> 백제예술대학교 합격</li>
                             <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> 정화예술대학교 합격</li>
                         </ul>
-                    </div>
 
-                    <!-- Right Column -->
-                    <div>
-                        <h3 class="font-eng font-bold text-[var(--text-black)] tracking-widest text-sm mb-6 border-b border-[var(--text-black)]/10 pb-3">WORSHIP & MINISTRY</h3>
-                        <ul class="space-y-4 text-sm font-light text-[var(--text-black)]/80 leading-relaxed mb-12">
-                            <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> 하기오스 워십 총괄 프로듀서, 메인건반 & 밴드마스터</li>
-                            <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> 월드미션 Live 세션 메인건반 & 밴드마스터 (2024, 25, 26~)</li>
-                            <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> 현) 전주흰돌교회 찬양팀 메인건반 역임</li>
-                            <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> 다세모 Worship Live 세션 (2017, 18, 20, 21)</li>
-                            <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> 전) 안양제일교회 찬양팀 세컨건반 역임</li>
-                            <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> 전) 양재한우리교회 찬양팀 메인건반 역임</li>
-                            <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> 전) 컴패션 밴드 '웨이브메이커스' Live 세션 메인건반 & 밴드마스터</li>
-                        </ul>
-
-                        <h3 class="font-eng font-bold text-[var(--text-black)] tracking-widest text-sm mb-6 border-b border-[var(--text-black)]/10 pb-3">CAREER & PERFORMANCE</h3>
+                        <h3 class="font-eng font-bold text-[var(--text-black)] tracking-widest text-sm mb-6 border-b border-[var(--text-black)]/10 pb-3">AWARDS</h3>
                         <ul class="space-y-4 text-sm font-light text-[var(--text-black)]/80 leading-relaxed">
-                            <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> CHEMI CONCERT SEASON 10 '테이 X 정인' 라이브 세션</li>
-                            <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> KBS 불후의 명곡 '임한별 - 인연' 스트링 편곡</li>
-                            <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> LUSH KOREA 20주년 쇼케이스 'Twisted Twenty' 하우스밴드 & 인순이, 김태우 피아노 라이브 세션</li>
-                            <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> 한문철TV 개국기념 콘서트 조영구, 한혜진, 박상철 등 피아노 라이브 세션</li>
-                            <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> 뮤지컬 '기억의 시간' 내부독회 음악감독</li>
-                            <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> 음악감독 전수경 콘서트 'Winter' 콜리 등 피아노 라이브 세션</li>
-                            <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> 음악감독 전수경 콘서트 'Spring' 인순이, 이젤 등 피아노 라이브 세션</li>
-                            <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> 음악감독 전수경 앨범 'Spring' 02. 환절기 편곡, 피아노 레코딩 세션</li>
+                            <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> 아중호반 예술제 최우수상 수상</li>
+                            <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> 2022 대학가요제 동상 수상 ‘이거 좋은데요’ (STN Remember ‘대학가요제’)</li>
+                        </ul>
+                    </div>
+
+                    <!-- Right Column: Career & Performance, Worship & Ministry -->
+                    <div>
+                        <h3 class="font-eng font-bold text-[var(--text-black)] tracking-widest text-sm mb-6 border-b border-[var(--text-black)]/10 pb-3">CAREER & PERFORMANCE</h3>
+                        <ul class="space-y-4 text-sm font-light text-[var(--text-black)]/80 leading-relaxed mb-12">
+                            <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> CHEMI CONCERT SEASON 10 테이 X 정인 라이브 세션</li>
+                            <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> LUSH KOREA 20주년 쇼케이스 Twisted Twenty 하우스밴드 인순이 김태우 라이브 세션</li>
+                            <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> 한문철tv 개국기념 콘서트 조영구 한혜진 박상철 라이브 세션</li>
+                            <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> 뮤지컬 ‘기억의 시간’ 내부독회 음악감독</li>
+                            <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> 음악감독 전수경 콘서트 Winter 콜리 라이브 세션</li>
+                            <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> 음악감독 전수경 콘서트 Spring 인순이 이젤 라이브 세션</li>
+                            <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> 음악감독 전수경 앨범 Spring 02. 환절기 편곡, 피아노 레코딩 세션</li>
+                        </ul>
+
+                        <h3 class="font-eng font-bold text-[var(--text-black)] tracking-widest text-sm mb-6 border-b border-[var(--text-black)]/10 pb-3">WORSHIP & MINISTRY</h3>
+                        <ul class="space-y-4 text-sm font-light text-[var(--text-black)]/80 leading-relaxed">
+                            <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> 하기오스 워십 리더</li>
+                            <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> 현 전주흰돌교회 찬양팀 메인건반 역임</li>
+                            <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> 월드미션 live 세션 메인건반 & 밴드마스터 (2024,25,26)</li>
+                            <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> 다세모 worship live 세션 (2017,18,20,21)</li>
+                            <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> 전) 안양제일교회 찬양팀 세컨건반 역임</li>
+                            <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> 전 )양재한우리교회 찬양팀 메인건반 역임</li>
+                            <li class="flex items-start"><span class="mr-3 text-[var(--pink-point)]">▪</span> 전 ) 컴패션 밴드 ‘웨이브메이커스’ live 세션 메인건반 & 밴드마스터</li>
                         </ul>
                     </div>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
 
-        <!-- PERFORMANCE SECTION -->
-        <div id="performance" class="tab-section hidden">
-            <section class="max-w-6xl mx-auto px-6 py-24 magazine-border">
-                <h2 class="font-eng font-bold text-3xl tracking-widest text-[var(--text-black)] pb-6 mb-12 border-b border-[var(--text-black)]">PERFORMANCE.</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-6 flex flex-col justify-between group shadow-sm">
-                        <div class="aspect-video bg-neutral-900 mb-6 relative overflow-hidden flex items-center justify-center cursor-pointer" onclick="window.open('https://youtu.be/sWxguAdJhLQ', '_blank')">
-                            <img src="https://img.youtube.com/vi/sWxguAdJhLQ/hqdefault.jpg" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-500">
+        <section id="performance" class="max-w-6xl mx-auto px-6 py-24 magazine-border">
+            <h2 class="font-eng font-bold text-3xl tracking-widest text-[var(--text-black)] pb-6 mb-12 border-b border-[var(--text-black)]">PERFORMANCE.</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Video 1 -->
+                <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-6 flex flex-col justify-between group shadow-sm">
+                    <div>
+                        <div class="aspect-video bg-[var(--bg-main)] mb-6 relative overflow-hidden flex items-center justify-center">
+                            <iframe class="w-full h-full absolute inset-0" src="https://www.youtube.com/embed/dmy2gg9Zp6I" title="나로부터 시작되리 - 하기오스" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
-                        <h3 class="font-bold text-lg text-[var(--text-black)] mb-2">아 하나님의 은혜로</h3>
-                        <p class="text-xs text-[var(--text-black)]/60 font-light">칸나쌤 연주, 리하모니</p>
+                        <h3 class="font-bold text-lg text-[var(--text-black)] mb-2">나로부터 시작되리 - 하기오스</h3>
+                        <p class="text-xs text-[var(--text-black)]/60 mb-6 font-light">칸나쌤 연주, 편곡</p>
                     </div>
-                    <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-6 flex flex-col justify-between group shadow-sm">
-                        <div class="aspect-video bg-neutral-900 mb-6 relative overflow-hidden flex items-center justify-center cursor-pointer" onclick="window.open('https://youtu.be/JohUn2I6WMQ', '_blank')">
-                            <img src="https://img.youtube.com/vi/JohUn2I6WMQ/hqdefault.jpg" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-500">
-                        </div>
-                        <h3 class="font-bold text-lg text-[var(--text-black)] mb-2">주 품에</h3>
-                        <p class="text-xs text-[var(--text-black)]/60 font-light">칸나쌤 연주, 편곡</p>
+                    <div class="pt-4 border-t border-[var(--text-black)]/10 flex justify-end">
+                        <a href="https://youtu.be/dmy2gg9Zp6I" target="_blank" class="px-5 py-2 bg-[var(--text-black)] text-white text-xs font-eng font-bold tracking-widest hover:bg-[var(--pink-point)] transition-colors">유튜브에서 감상하기</a>
                     </div>
                 </div>
-            </section>
-        </div>
 
-        <!-- LESSON SECTION -->
-        <div id="classes" class="tab-section hidden">
-            <section class="max-w-6xl mx-auto px-6 py-24 magazine-border">
-                <h2 class="font-eng font-bold text-3xl tracking-widest text-[var(--text-black)] pb-6 mb-4 border-b border-[var(--text-black)]">LESSON.</h2>
-                <p class="text-xs font-light text-[var(--text-black)]/60 tracking-wider mb-8">개개인의 성향과 레벨에 맞춰 1:1 맞춤 커리큘럼을 제공합니다.</p>
+                <!-- Video 2 -->
+                <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-6 flex flex-col justify-between group shadow-sm">
+                    <div>
+                        <div class="aspect-video bg-[var(--bg-main)] mb-6 relative overflow-hidden flex items-center justify-center">
+                            <iframe class="w-full h-full absolute inset-0" src="https://www.youtube.com/embed/qoDW8XJOT5w" title="전능하신 나의 주 하나님은" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <h3 class="font-bold text-lg text-[var(--text-black)] mb-2">전능하신 나의 주 하나님은</h3>
+                        <p class="text-xs text-[var(--text-black)]/60 mb-6 font-light">칸나쌤 연주, 리하모니</p>
+                    </div>
+                    <div class="pt-4 border-t border-[var(--text-black)]/10 flex justify-end">
+                        <a href="https://youtu.be/qoDW8XJOT5w" target="_blank" class="px-5 py-2 bg-[var(--text-black)] text-white text-xs font-eng font-bold tracking-widest hover:bg-[var(--pink-point)] transition-colors">유튜브에서 감상하기</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="classes" class="max-w-6xl mx-auto px-6 py-24 magazine-border">
+            <h2 class="font-eng font-bold text-3xl tracking-widest text-[var(--text-black)] pb-6 mb-8 border-b border-[var(--text-black)]">CLASS.</h2>
+            
+            <ul class="flex flex-col border-t border-[var(--text-black)]/10">
+                <li class="group border-b border-[var(--text-black)]/10 py-10 transition-all duration-300 hover:border-[var(--pink-point)] cursor-default flex flex-col md:flex-row md:items-center justify-between">
+                    <div>
+                        <h3 class="font-bold text-2xl text-[var(--text-black)]">취미 클래스</h3>
+                    </div>
+                    <p class="text-sm font-light text-[var(--text-black)]/60 text-left md:text-right mt-4 md:mt-0 leading-relaxed group-hover:text-[var(--text-black)] transition-colors">
+                        악보를 전혀 못 보시는 분들도 괜찮습니다.<br>
+                        원하는 곡을 쉽고 재미있게 완성하며<br>
+                        피아노의 진정한 즐거움을 찾아드립니다.
+                    </p>
+                </li>
                 
-                <ul class="flex flex-col border-t border-[var(--text-black)]/10 mb-16">
-                    <li class="border-b border-[var(--text-black)]/10 py-8 md:py-10 flex flex-col md:flex-row md:items-center justify-between">
-                        <h3 class="font-bold text-xl md:text-2xl text-[var(--text-black)]">취미 클래스</h3>
-                        <p class="text-sm font-light text-[var(--text-black)]/60 text-left md:text-right mt-3 md:mt-0">팝, 재즈, 뉴에이지 등 좋아하는 곡 위주 수업</p>
-                    </li>
-                    <li class="border-b border-[var(--text-black)]/10 py-8 md:py-10 flex flex-col md:flex-row md:items-center justify-between">
-                        <h3 class="font-bold text-xl md:text-2xl text-[var(--text-black)]">입시 클래스</h3>
-                        <p class="text-sm font-light text-[var(--text-black)]/60 text-left md:text-right mt-3 md:mt-0">체계적인 커리큘럼과 모의고사를 통한 합격 완성</p>
-                    </li>
-                    <li class="border-b border-[var(--text-black)]/10 py-8 md:py-10 flex flex-col md:flex-row md:items-center justify-between">
-                        <h3 class="font-bold text-xl md:text-2xl text-[var(--text-black)]">전문 클래스</h3>
-                        <p class="text-sm font-light text-[var(--text-black)]/60 text-left md:text-right mt-3 md:mt-0">전공자 및 준프로 뮤지션을 위한 심화 과정</p>
-                    </li>
-                    <li class="border-b border-[var(--text-black)]/10 py-8 md:py-10 flex flex-col md:flex-row md:items-center justify-between">
-                        <h3 class="font-bold text-xl md:text-2xl text-[var(--text-black)]">CCM 클래스</h3>
-                        <p class="text-sm font-light text-[var(--text-black)]/60 text-left md:text-right mt-3 md:mt-0">예배 건반을 위한 실전 반주법 및 코드 리하모니</p>
-                    </li>
-                </ul>
-
-                <!-- Lesson Inquiry Form -->
-                <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-6 md:p-12 shadow-sm">
-                    <div class="text-center mb-10">
-                        <h3 class="font-eng font-bold text-2xl tracking-widest text-[var(--text-black)] mb-3">LESSON INQUIRY</h3>
-                        <p class="text-xs font-light text-[var(--text-black)]/60">아래 항목 작성 후 제출하시면 카카오톡 채널 상담으로 연결됩니다.</p>
+                <li class="group border-b border-[var(--text-black)]/10 py-10 transition-all duration-300 hover:border-[var(--pink-point)] cursor-default flex flex-col md:flex-row md:items-center justify-between">
+                    <div>
+                        <h3 class="font-bold text-2xl text-[var(--text-black)]">입시 클래스</h3>
                     </div>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-                        <div><label class="block text-xs font-bold mb-2">성함 / 나이 / 성별</label><input type="text" class="w-full p-3 border border-[var(--text-black)]/10 text-sm focus:border-[var(--pink-point)] outline-none" placeholder="홍길동 / 25 / 여"></div>
-                        <div><label class="block text-xs font-bold mb-2">연락처</label><input type="text" class="w-full p-3 border border-[var(--text-black)]/10 text-sm focus:border-[var(--pink-point)] outline-none" placeholder="010-0000-0000"></div>
-                        <div><label class="block text-xs font-bold mb-2">거주지역</label><input type="text" class="w-full p-3 border border-[var(--text-black)]/10 text-sm focus:border-[var(--pink-point)] outline-none" placeholder="예: 성남시 분당구"></div>
-                        <div><label class="block text-xs font-bold mb-2">수강 희망 클래스</label><input type="text" class="w-full p-3 border border-[var(--text-black)]/10 text-sm focus:border-[var(--pink-point)] outline-none" placeholder="취미 / 입시 / 전문 / CCM"></div>
-                        
-                        <div class="md:col-span-2"><label class="block text-xs font-bold mb-2">피아노 및 음악 경험 유무</label><input type="text" class="w-full p-3 border border-[var(--text-black)]/10 text-sm focus:border-[var(--pink-point)] outline-none" placeholder="바이엘, 체르니, 실용음악 학원 3개월 등 상세히"></div>
-                        
-                        <div><label class="block text-xs font-bold mb-2">좋아하는 아티스트 및 곡</label><input type="text" class="w-full p-3 border border-[var(--text-black)]/10 text-sm focus:border-[var(--pink-point)] outline-none" placeholder="재즈, 팝, 뉴에이지 등"></div>
-                        <div><label class="block text-xs font-bold mb-2">개인 건반 보유 여부</label><input type="text" class="w-full p-3 border border-[var(--text-black)]/10 text-sm focus:border-[var(--pink-point)] outline-none" placeholder="업라이트, 디지털피아노, 없음 등"></div>
-                        
-                        <!-- CCM 전용 및 문의사항 -->
-                        <div class="md:col-span-2 p-5 bg-[var(--bg-main)] border border-[var(--pink-point)]/20 mt-2">
-                            <label class="block text-xs font-bold mb-2">예배 반주 경험 유무 / 출석교회 <span class="text-[var(--pink-point)] font-medium">(CCM 레슨 희망 시)</span></label>
-                            <input type="text" class="w-full p-3 bg-white border border-[var(--text-black)]/10 text-sm focus:border-[var(--pink-point)] outline-none" placeholder="메인건반 2년 / 00교회 (해당 없을 시 비워주세요)">
-                        </div>
-                        
-                        <div class="md:col-span-2">
-                            <label class="block text-xs font-bold mb-2">문의 및 유의사항 (선택)</label>
-                            <textarea rows="3" class="w-full p-3 border border-[var(--text-black)]/10 text-sm focus:border-[var(--pink-point)] outline-none resize-none" placeholder="레슨과 관련하여 궁금한 점이나 특이사항이 있다면 자유롭게 적어주세요."></textarea>
-                        </div>
+                    <p class="text-sm font-light text-[var(--text-black)]/60 text-left md:text-right mt-4 md:mt-0 leading-relaxed group-hover:text-[var(--text-black)] transition-colors">
+                        체계적인 커리큘럼과 실전 모의고사를 통해<br>
+                        명문 실용음악과 합격의 문을 두드립니다.<br>
+                        개개인의 개성을 살리는 피아노 연주법 지도.
+                    </p>
+                </li>
+
+                <li class="group border-b border-[var(--text-black)]/10 py-10 transition-all duration-300 hover:border-[var(--pink-point)] cursor-default flex flex-col md:flex-row md:items-center justify-between">
+                    <div>
+                        <h3 class="font-bold text-2xl text-[var(--text-black)]">전문 클래스</h3>
                     </div>
-                    <button class="w-full py-4 bg-[var(--text-black)] text-white text-sm font-bold tracking-widest hover:bg-[var(--pink-point)] transition-colors" onclick="showToast('기능 준비 중입니다. 우측 상단 CONTACT를 이용해주세요.')">레슨 문의 보내기</button>
-                </div>
-            </section>
-        </div>
+                    <p class="text-sm font-light text-[var(--text-black)]/60 text-left md:text-right mt-4 md:mt-0 leading-relaxed group-hover:text-[var(--text-black)] transition-colors">
+                        실용음악 전공자 및 준프로 뮤지션을 위한 심화 과정.<br>
+                        전문 연주자로 도약하기 위한 심도 있는 테크닉 완성.
+                    </p>
+                </li>
 
-        <!-- SHEET SHOP SECTION (유료 악보 & 무료 리드시트 통합) -->
-        <div id="sheet-music" class="tab-section hidden">
-            <section class="max-w-6xl mx-auto px-6 py-24 magazine-border">
-                <h2 class="font-eng font-bold text-3xl tracking-widest text-[var(--text-black)] pb-6 mb-8 border-b border-[var(--text-black)]">SHEET.</h2>
-                
-                <!-- 카테고리 필터 태그 -->
-                <div class="flex flex-wrap gap-2 mb-8">
-                    <button class="px-4 py-2 bg-[var(--text-black)] text-white text-[11px] font-bold rounded-full"># 전체보기</button>
-                    <button class="px-4 py-2 bg-[var(--white-bg)] border border-[var(--text-black)]/20 text-[var(--text-black)]/60 hover:border-[var(--pink-point)] hover:text-[var(--pink-point)] text-[11px] font-bold rounded-full transition-colors"># 피아노 솔로 (유료)</button>
-                    <button class="px-4 py-2 bg-[var(--white-bg)] border border-[var(--text-black)]/20 text-[var(--text-black)]/60 hover:border-[var(--pink-point)] hover:text-[var(--pink-point)] text-[11px] font-bold rounded-full transition-colors"># 리드시트 (무료)</button>
-                    <button class="px-4 py-2 bg-[var(--white-bg)] border border-[var(--text-black)]/20 text-[var(--text-black)]/60 hover:border-[var(--pink-point)] hover:text-[var(--pink-point)] text-[11px] font-bold rounded-full transition-colors"># 찬송가 리하모니</button>
-                </div>
-
-                <div class="mb-12 relative">
-                    <input type="text" placeholder="악보 제목이나 장르를 검색해보세요" class="w-full p-4 pl-12 bg-[var(--white-bg)] border border-[var(--text-black)]/20 text-sm focus:outline-none focus:border-[var(--pink-point)] shadow-sm font-light">
-                    <svg class="w-5 h-5 absolute left-4 top-4 text-[var(--text-black)]/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                    <!-- Sheet Item 1 -->
-                    <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-6 flex flex-col justify-between group shadow-sm cursor-pointer hover:border-[var(--pink-point)] transition-colors" onclick="openSheetDetail('sheet1')">
-                        <div class="aspect-[3/4] bg-stone-100 mb-6 overflow-hidden relative border border-stone-200">
-                            <!-- 악보 표지 느낌의 이미지 대체 -->
-                            <div class="w-full h-full bg-[#f4f1ea] flex flex-col items-center justify-center p-4">
-                                <div class="text-[10px] font-eng font-bold tracking-widest text-[var(--pink-point)] mb-4">PIANO SCORE</div>
-                                <h4 class="font-bold text-center text-[var(--text-black)] text-lg mb-2">아 하나님의 은혜로</h4>
-                                <p class="text-[10px] text-[var(--text-black)]/50">Arranged by KANNA</p>
-                            </div>
-                        </div>
-                        <h3 class="font-bold text-lg text-[var(--text-black)] mb-2 group-hover:text-[var(--pink-point)] transition-colors">아 하나님의 은혜로 (Piano Solo)</h3>
-                        <p class="text-xs text-[var(--text-black)]/60 mb-4 font-light">찬송가 리하모니</p>
-                        <div class="pt-4 border-t border-[var(--text-black)]/10">
-                            <span class="font-eng font-bold text-base">5,000 KRW</span>
-                        </div>
+                <li class="group border-b border-[var(--text-black)]/10 py-10 transition-all duration-300 hover:border-[var(--pink-point)] cursor-default flex flex-col md:flex-row md:items-center justify-between">
+                    <div>
+                        <h3 class="font-bold text-2xl text-[var(--text-black)]">CCM 클래스</h3>
                     </div>
+                    <p class="text-sm font-light text-[var(--text-black)]/60 text-left md:text-right mt-4 md:mt-0 leading-relaxed group-hover:text-[var(--text-black)] transition-colors">
+                        찬양 반주자 및 예배 건반을 위한 실전 반주법.<br>
+                        코드 리하모니제이션과 풍성한 보이싱 스킬 마스터.
+                    </p>
+                </li>
 
-                    <!-- Sheet Item 2 -->
-                    <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-6 flex flex-col justify-between group shadow-sm cursor-pointer hover:border-[var(--pink-point)] transition-colors" onclick="openSheetDetail('sheet2')">
-                        <div class="aspect-[3/4] bg-stone-100 mb-6 overflow-hidden relative border border-stone-200">
-                            <div class="w-full h-full bg-[#f4f1ea] flex flex-col items-center justify-center p-4">
-                                <div class="text-[10px] font-eng font-bold tracking-widest text-[var(--pink-point)] mb-4">PIANO SCORE</div>
-                                <h4 class="font-bold text-center text-[var(--text-black)] text-lg mb-2">주 품에</h4>
-                                <p class="text-[10px] text-[var(--text-black)]/50">Jazz Ver. / Arranged by KANNA</p>
-                            </div>
-                        </div>
-                        <h3 class="font-bold text-lg text-[var(--text-black)] mb-2 group-hover:text-[var(--pink-point)] transition-colors">주 품에 (Jazz Ver.)</h3>
-                        <p class="text-xs text-[var(--text-black)]/60 mb-4 font-light">CCM 재즈 편곡</p>
-                        <div class="pt-4 border-t border-[var(--text-black)]/10">
-                            <span class="font-eng font-bold text-base">5,000 KRW</span>
-                        </div>
+                <li class="group border-b border-[var(--text-black)]/10 py-10 transition-all duration-300 hover:border-[var(--pink-point)] cursor-default flex flex-col md:flex-row md:items-center justify-between">
+                    <div>
+                        <h3 class="font-bold text-2xl text-[var(--text-black)]">레코딩 & 편곡 작업 의뢰</h3>
                     </div>
+                    <p class="text-sm font-light text-[var(--text-black)]/60 text-left md:text-right mt-4 md:mt-0 leading-relaxed group-hover:text-[var(--text-black)] transition-colors">
+                        건반 세션, 음원 편곡, MR 제작 및 맞춤 악보 제작 등<br>
+                        프로페셔널한 사운드 메이킹을 지원합니다.
+                    </p>
+                </li>
+            </ul>
+        </section>
 
-                    <!-- Sheet Item 3 (Free Lead Sheet) -->
-                    <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-6 flex flex-col justify-between group shadow-sm cursor-pointer hover:border-[var(--pink-point)] transition-colors" onclick="openSheetDetail('sheet3')">
-                        <div class="aspect-[3/4] bg-stone-100 mb-6 overflow-hidden relative border border-stone-200">
-                            <div class="w-full h-full bg-[#f4f1ea] flex flex-col items-center justify-center p-4">
-                                <div class="text-[10px] font-eng font-bold tracking-widest text-[var(--pink-point)] mb-4">LEAD SHEET</div>
-                                <h4 class="font-bold text-center text-[var(--text-black)] text-lg mb-2">주 십자가를 지심으로</h4>
-                                <p class="text-[10px] text-[var(--text-black)]/50">Hagios Worship</p>
-                            </div>
+        <section id="sheet-music" class="max-w-6xl mx-auto px-6 py-24 magazine-border">
+            <h2 class="font-eng font-bold text-3xl tracking-widest text-[var(--text-black)] pb-6 mb-12 border-b border-[var(--text-black)]">SHOP & SHEET.</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-6 flex flex-col justify-between group shadow-sm">
+                    <div>
+                        <div class="aspect-[4/3] bg-[var(--bg-main)] mb-6 overflow-hidden relative">
+                            <img src="https://placehold.co/600x450/FAF3F5/111?text=Sheet+Music+1" alt="Sheet 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x450/FAF3F5/111?text=Sheet+Music+1'">
                         </div>
-                        <h3 class="font-bold text-lg text-[var(--text-black)] mb-2 group-hover:text-[var(--pink-point)] transition-colors">주 십자가를 지심으로</h3>
-                        <p class="text-xs text-[var(--text-black)]/60 mb-4 font-light">하기오스 워십 리드시트</p>
-                        <div class="pt-4 border-t border-[var(--text-black)]/10">
-                            <span class="font-eng font-bold text-base text-[var(--pink-point)]">FREE</span>
-                        </div>
+                        <h3 class="font-bold text-lg text-[var(--text-black)] mb-2">나로부터 시작되리 (Piano Solo)</h3>
+                        <p class="text-xs text-[var(--text-black)]/60 mb-4 font-light">하기오스 미니스트리 편곡 버전 악보 (PDF)</p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-[var(--text-black)]/10">
+                        <span class="font-eng font-bold text-base">5,000 KRW</span>
+                        <a href="http://pf.kakao.com/_MlAaX" target="_blank" class="px-5 py-2 bg-[var(--text-black)] text-white text-xs font-eng font-bold tracking-widest hover:bg-[var(--pink-point)] transition-colors">BUY</a>
                     </div>
                 </div>
-            </section>
-        </div>
+
+                <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-6 flex flex-col justify-between group shadow-sm">
+                    <div>
+                        <div class="aspect-[4/3] bg-[var(--bg-main)] mb-6 overflow-hidden relative">
+                            <img src="https://placehold.co/600x450/FAF3F5/111?text=Sheet+Music+2" alt="Sheet 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x450/FAF3F5/111?text=Sheet+Music+2'">
+                        </div>
+                        <h3 class="font-bold text-lg text-[var(--text-black)] mb-2">전능하신 나의 주 하나님은 (Jazz Ver.)</h3>
+                        <p class="text-xs text-[var(--text-black)]/60 mb-4 font-light">재즈 보이싱 및 리하모니제이션 악보 (PDF)</p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-[var(--text-black)]/10">
+                        <span class="font-eng font-bold text-base">5,000 KRW</span>
+                        <a href="http://pf.kakao.com/_MlAaX" target="_blank" class="px-5 py-2 bg-[var(--text-black)] text-white text-xs font-eng font-bold tracking-widest hover:bg-[var(--pink-point)] transition-colors">BUY</a>
+                    </div>
+                </div>
+
+                <div class="bg-[var(--white-bg)] border border-[var(--text-black)]/10 p-6 flex flex-col justify-between group shadow-sm">
+                    <div>
+                        <div class="aspect-[4/3] bg-[var(--bg-main)] mb-6 overflow-hidden relative flex items-center justify-center p-6 text-center">
+                            <span class="font-eng font-bold text-sm text-[var(--text-black)] tracking-widest">RECORDING & ARRANGING</span>
+                        </div>
+                        <h3 class="font-bold text-lg text-[var(--text-black)] mb-2">레코딩 & 편곡 작업 의뢰</h3>
+                        <p class="text-xs text-[var(--text-black)]/60 mb-4 font-light">건반 세션 및 음원 편곡, MR 제작 맞춤 의뢰</p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-[var(--text-black)]/10">
+                        <span class="font-eng font-bold text-xs text-[var(--pink-point)]">CUSTOM ORDER</span>
+                        <a href="http://pf.kakao.com/_MlAaX" target="_blank" class="px-5 py-2 bg-[var(--text-black)] text-white text-xs font-eng font-bold tracking-widest hover:bg-[var(--pink-point)] transition-colors">INQUIRE</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="inquiry" class="max-w-6xl mx-auto px-6 py-24 text-center">
+            <h2 class="font-eng font-bold text-xs tracking-[0.3em] text-[var(--pink-point)] mb-4 uppercase">GET IN TOUCH</h2>
+            <h3 class="text-3xl md:text-4xl font-bold text-[var(--text-black)] mb-8">레슨 및 작업 문의</h3>
+            <div class="flex justify-center mb-16">
+                <a href="http://pf.kakao.com/_MlAaX" target="_blank" class="px-10 py-4 bg-[var(--text-black)] text-white font-eng font-bold text-xs tracking-widest hover:bg-[var(--pink-point)] transition-all shadow-sm">문의하기 (카카오톡)</a>
+            </div>
+
+            <div class="flex justify-center space-x-6 mb-16">
+                <a href="https://www.instagram.com/kanna_pianoclass/" target="_blank" class="w-12 h-12 bg-white border border-[var(--text-black)]/10 rounded-full flex items-center justify-center hover:bg-[var(--pink-point)] hover:text-white transition-all transform hover:-translate-y-1">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="https://www.youtube.com/@%EC%B9%B8%EB%82%98%ED%94%BC%EC%95%84%EB%85%B8" target="_blank" class="w-12 h-12 bg-white border border-[var(--text-black)]/10 rounded-full flex items-center justify-center hover:bg-[var(--pink-point)] hover:text-white transition-all transform hover:-translate-y-1">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </a>
+            </div>
+
+            <h1 class="font-eng font-black text-4xl md:text-6xl tracking-tighter text-[var(--text-black)]">KANNA PIANO CLASS.</h1>
+        </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-[var(--white-bg)] border-t border-[var(--text-black)]/10 py-12">
-        <div class="max-w-6xl mx-auto px-6 text-center">
-            <h2 class="font-eng font-bold text-xl tracking-widest text-[var(--text-black)] mb-6">KANNA<span class="text-[var(--pink-point)]">.</span></h2>
-            <div class="text-xs font-light text-[var(--text-black)]/60 leading-relaxed mb-6">
-                <strong>작업 및 레슨 문의</strong><br>
-                Kakao. 칸나피아노<br>
-                Email. kanna.pianoccm@gmail.com
-            </div>
-            <p class="text-[10px] font-eng tracking-widest text-[var(--text-black)]/40 uppercase">© 2026 KANNA PIANO CLASS. All Rights Reserved.</p>
-        </div>
-    </footer>
-
-    <!-- 연락처 모달 -->
-    <div id="contactModal" class="hidden fixed inset-0 bg-black/60 z-[100] flex items-center justify-center p-4">
-        <div class="bg-white p-8 max-w-sm w-full relative modal-fade-in shadow-2xl">
-            <button onclick="closeContactModal()" class="absolute top-4 right-4 text-2xl text-[var(--text-black)]/40 hover:text-black">&times;</button>
-            <h3 class="font-bold text-xl mb-2 text-center text-[var(--text-black)]">작업 및 레슨 문의</h3>
-            <p class="text-xs text-[var(--text-black)]/60 text-center mb-6 leading-relaxed break-keep">
-                모든 문의는 카카오톡 채널로 남겨주시면<br>가장 빠르게 답변 받아보실 수 있습니다.
-            </p>
-            <div class="space-y-3">
-                <a href="http://pf.kakao.com/_MlAaX" target="_blank" class="block w-full py-4 bg-[#FEE500] text-[#191919] text-sm font-bold text-center rounded-sm transition-opacity hover:opacity-90">카카오톡 채널로 문의하기</a>
-                <button onclick="copyEmail()" class="block w-full py-4 bg-white border border-[var(--text-black)]/20 text-[var(--text-black)] text-sm font-bold text-center rounded-sm hover:border-[var(--text-black)] transition-colors">kanna.pianoccm@gmail.com</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Sheet Detail Modal (어노인팅 스타일 메타데이터 & 토글 뷰 적용) -->
-    <div id="sheetModal" class="hidden fixed inset-0 bg-black/80 z-[100] flex items-center justify-center p-4">
-        <div class="bg-white max-w-4xl w-full h-[90vh] md:h-auto md:max-h-[85vh] flex flex-col md:flex-row relative modal-fade-in shadow-2xl overflow-y-auto md:overflow-hidden">
-            <button onclick="closeSheetModal()" class="absolute top-4 right-4 z-10 text-2xl text-black md:text-[var(--text-black)]/40 hover:text-black w-8 h-8 flex items-center justify-center bg-white/80 rounded-full md:bg-transparent">&times;</button>
-            
-            <!-- Left: Media Viewer -->
-            <div class="w-full md:w-3/5 bg-stone-100 relative flex flex-col">
-                <!-- Toggle Tabs -->
-                <div class="flex border-b border-stone-200 bg-white">
-                    <button onclick="switchSheetMedia('preview')" id="tab-preview" class="flex-1 py-3 text-xs font-bold bg-stone-100 border-t-2 border-[var(--text-black)] text-[var(--text-black)]">1페이지 미리보기</button>
-                    <button onclick="switchSheetMedia('video')" id="tab-video" class="flex-1 py-3 text-xs font-bold bg-white border-t-2 border-transparent text-[var(--text-black)]/50 hover:bg-stone-50">연주 영상</button>
-                </div>
-                
-                <!-- Media Content -->
-                <div class="flex-1 min-h-[300px] md:min-h-[500px] relative">
-                    <!-- 악보 이미지 -->
-                    <div id="media-preview" class="absolute inset-0 p-4 flex items-center justify-center overflow-auto">
-                        <img id="detail-img" src="" alt="Sheet Preview" class="max-w-full shadow-md border border-stone-200">
-                    </div>
-                    <!-- 유튜브 영상 -->
-                    <div id="media-video" class="absolute inset-0 hidden">
-                        <iframe id="detail-video" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right: Metadata & Actions -->
-            <div class="w-full md:w-2/5 p-8 flex flex-col bg-white overflow-y-auto">
-                <div class="mb-4">
-                    <span id="meta-type" class="bg-[var(--bg-main)] text-[10px] font-eng font-bold px-2 py-1 text-[var(--text-black)]/60 uppercase">PIANO SCORE</span>
-                </div>
-                <h2 id="detail-title" class="text-2xl font-bold text-[var(--text-black)] mb-2">악보 제목</h2>
-                <p id="detail-price" class="font-eng font-bold text-[var(--pink-point)] text-xl mb-8">5,000 KRW</p>
-                
-                <!-- Metadata Table -->
-                <div class="border-t border-b border-[var(--text-black)]/10 py-4 mb-6">
-                    <ul class="space-y-3 text-sm text-[var(--text-black)]">
-                        <li class="flex"><span class="w-20 font-bold text-[var(--text-black)]/60">원곡</span><span id="meta-original">원곡명</span></li>
-                        <li class="flex"><span class="w-20 font-bold text-[var(--text-black)]/60">편곡</span><span id="meta-arranger">KANNA</span></li>
-                        <li class="flex"><span class="w-20 font-bold text-[var(--text-black)]/60">조표 (Key)</span><span id="meta-key" class="font-eng font-semibold text-[var(--pink-point)]">C ➔ Db</span></li>
-                        <li class="flex"><span class="w-20 font-bold text-[var(--text-black)]/60">난이도</span><span id="meta-diff">⭐⭐⭐</span></li>
-                        <li class="flex"><span class="w-20 font-bold text-[var(--text-black)]/60">페이지 수</span><span id="meta-pages">5 Pages</span></li>
-                    </ul>
-                </div>
-
-                <div class="flex-grow">
-                    <h4 class="text-xs font-bold mb-2">곡 설명</h4>
-                    <p id="detail-desc" class="text-xs font-light text-[var(--text-black)]/70 leading-relaxed break-keep">
-                        상세 설명 내용이 들어갑니다.
-                    </p>
-                </div>
-
-                <!-- 구매/다운로드 버튼 (JS에서 유/무료 구분에 따라 동적 생성) -->
-                <div id="modal-actions" class="mt-8 flex gap-2">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 커스텀 토스트 알림 -->
-    <div id="toast">알림 메시지</div>
-
-    <script>
-        // === 탭 이동 로직 (즉각 전환) ===
-        function showSection(sectionId) {
-            // 모든 탭 숨기기
-            const sections = document.querySelectorAll('.tab-section');
-            sections.forEach(sec => sec.classList.add('hidden'));
-            
-            // 타겟 탭 보이기
-            const target = document.getElementById(sectionId);
-            if (target) {
-                target.classList.remove('hidden');
-                target.classList.add('block');
-            }
-            
-            // 페이지 최상단으로 즉시 이동 (스크롤 애니메이션 없음)
-            window.scrollTo(0, 0);
-        }
-
-        // === 모바일 메뉴 제어 ===
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
-        }
-
-        // === 컨택트 모달 & 이메일 복사 ===
-        function openContactModal() {
-            document.getElementById('contactModal').classList.remove('hidden');
-        }
-        
-        function closeContactModal() {
-            document.getElementById('contactModal').classList.add('hidden');
-        }
-
-        function copyEmail() {
-            const email = 'kanna.pianoccm@gmail.com';
-            
-            // 클립보드 복사 로직 (보안 정책 대응)
-            if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(email).then(() => showToast('이메일 주소가 복사되었습니다.'));
-            } else {
-                // Fallback for older browsers or non-HTTPS
-                const textArea = document.createElement("textarea");
-                textArea.value = email;
-                textArea.style.position = "fixed";
-                textArea.style.left = "-999999px";
-                textArea.style.top = "-999999px";
-                document.body.appendChild(textArea);
-                textArea.focus();
-                textArea.select();
-                try {
-                    document.execCommand('copy');
-                    showToast('이메일 주소가 복사되었습니다.');
-                } catch (err) {
-                    console.error('복사 실패', err);
-                }
-                textArea.remove();
-            }
-        }
-
-        // === 커스텀 토스트 알림 ===
-        function showToast(message) {
-            const toast = document.getElementById("toast");
-            toast.innerText = message;
-            toast.className = "show";
-            setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
-        }
-
-        // === 악보 상세 모달 데이터 로직 ===
-        const sheetDB = {
-            'sheet1': {
-                title: '아 하나님의 은혜로 (Piano Solo)',
-                type: 'PIANO SCORE',
-                price: '5,000 KRW',
-                isFree: false,
-                original: '찬송가 310장',
-                arranger: 'KANNA',
-                key: 'F ➔ G',
-                difficulty: '⭐⭐⭐ (중급)',
-                pages: '4 Pages',
-                desc: '세련된 텐션 코드와 세컨더리 도미넌트를 활용한 리하모니제이션이 돋보이는 버전입니다. 예배 전 묵상 피아노나 특송 반주로 강력히 추천합니다.',
-                ytId: 'sWxguAdJhLQ',
-                previewImg: 'https://placehold.co/600x800/FAF3F5/111?text=Score+Preview+1'
-            },
-            'sheet2': {
-                title: '주 품에 (Jazz Ver.)',
-                type: 'PIANO SCORE',
-                price: '5,000 KRW',
-                isFree: false,
-                original: '마커스',
-                arranger: 'KANNA',
-                key: 'C ➔ Db',
-                difficulty: '⭐⭐⭐⭐ (고급)',
-                pages: '5 Pages',
-                desc: '아름다운 재즈 보이싱으로 완전히 새롭게 편곡한 주 품에 악보입니다. 투파이브원(2-5-1) 텐션 코드 라인을 연습하기 아주 좋은 악보입니다.',
-                ytId: 'JohUn2I6WMQ',
-                previewImg: 'https://placehold.co/600x800/FAF3F5/111?text=Score+Preview+2'
-            },
-            'sheet3': {
-                title: '주 십자가를 지심으로',
-                type: 'LEAD SHEET',
-                price: 'FREE',
-                isFree: true,
-                original: '찬송가 265장',
-                arranger: 'KANNA',
-                key: 'G',
-                difficulty: '⭐⭐ (초급)',
-                pages: '2 Pages',
-                desc: '하기오스 워십 사역 및 개인 작업에서 실제 사용한 리드시트입니다. 멜로디와 세련된 코드 진행이 포함되어 있어 밴드 합주나 개인 묵상 반주에 유용하게 활용할 수 있습니다. (로그인 후 무료 다운로드 가능)',
-                ytId: '', // 리드시트는 영상이 없으므로 비워둠
-                previewImg: 'https://placehold.co/600x800/FAF3F5/111?text=Lead+Sheet+Preview'
-            }
-        };
-
-        function openSheetDetail(id) {
-            const data = sheetDB[id];
-            if (!data) return;
-
-            // 데이터 바인딩
-            document.getElementById('meta-type').innerText = data.type;
-            document.getElementById('detail-title').innerText = data.title;
-            document.getElementById('detail-price').innerText = data.price;
-            document.getElementById('meta-original').innerText = data.original;
-            document.getElementById('meta-arranger').innerText = data.arranger;
-            document.getElementById('meta-key').innerText = data.key;
-            document.getElementById('meta-diff').innerText = data.difficulty;
-            document.getElementById('meta-pages').innerText = data.pages;
-            document.getElementById('detail-desc').innerText = data.desc;
-            
-            // 미디어 바인딩
-            document.getElementById('detail-img').src = data.previewImg;
-            
-            // 영상 유무에 따른 탭 제어
-            const tabVideo = document.getElementById('tab-video');
-            if (data.ytId) {
-                tabVideo.style.display = 'block';
-                document.getElementById('detail-video').src = `https://www.youtube.com/embed/${data.ytId}`;
-            } else {
-                tabVideo.style.display = 'none'; // 영상이 없으면 연주 영상 탭 숨김
-                document.getElementById('detail-video').src = '';
-            }
-
-            // 유/무료 여부에 따른 구매 버튼 동적 렌더링
-            const actionContainer = document.getElementById('modal-actions');
-            if (data.isFree) {
-                // 무료일 경우 단일 버튼 출력
-                actionContainer.innerHTML = `<button class="w-full py-4 bg-[var(--text-black)] text-white text-[11px] font-eng font-bold tracking-wider hover:bg-[var(--pink-point)] transition-colors" onclick="showToast('무료 다운로드를 위해 로그인이 필요합니다.')">FREE DOWNLOAD</button>`;
-            } else {
-                // 유료일 경우 장바구니/구매하기 분리 출력
-                actionContainer.innerHTML = `
-                    <button class="w-1/3 py-4 bg-stone-100 text-stone-800 text-[11px] font-eng font-bold tracking-wider hover:bg-stone-200 transition-colors" onclick="showToast('장바구니에 담겼습니다.')">CART</button>
-                    <button class="w-2/3 py-4 bg-[var(--text-black)] text-white text-[11px] font-eng font-bold tracking-wider hover:bg-[var(--pink-point)] transition-colors" onclick="showToast('결제 모듈 연결이 필요합니다.')">BUY NOW</button>
-                `;
-            }
-            
-            // 초기 뷰 설정 (무조건 1페이지 미리보기 화면이 보이도록)
-            switchSheetMedia('preview');
-            
-            // 모달 열기
-            document.getElementById('sheetModal').classList.remove('hidden');
-        }
-
-        function closeSheetModal() {
-            document.getElementById('sheetModal').classList.add('hidden');
-            // 유튜브 소리 끄기 위해 iframe 초기화
-            document.getElementById('detail-video').src = "";
-        }
-
-        function switchSheetMedia(type) {
-            const tabPreview = document.getElementById('tab-preview');
-            const tabVideo = document.getElementById('tab-video');
-            const mediaPreview = document.getElementById('media-preview');
-            const mediaVideo = document.getElementById('media-video');
-
-            if (type === 'preview') {
-                tabPreview.className = "flex-1 py-3 text-xs font-bold bg-stone-100 border-t-2 border-[var(--text-black)] text-[var(--text-black)]";
-                tabVideo.className = "flex-1 py-3 text-xs font-bold bg-white border-t-2 border-transparent text-[var(--text-black)]/50 hover:bg-stone-50";
-                mediaPreview.classList.remove('hidden');
-                mediaVideo.classList.add('hidden');
-            } else {
-                tabVideo.className = "flex-1 py-3 text-xs font-bold bg-stone-100 border-t-2 border-[var(--text-black)] text-[var(--text-black)]";
-                tabPreview.className = "flex-1 py-3 text-xs font-bold bg-white border-t-2 border-transparent text-[var(--text-black)]/50 hover:bg-stone-50";
-                mediaVideo.classList.remove('hidden');
-                mediaPreview.classList.add('hidden');
-            }
-        }
-    </script>
 </body>
 </html>
